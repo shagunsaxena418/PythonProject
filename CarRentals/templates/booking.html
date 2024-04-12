@@ -1,188 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-  <!--head section-->
+<html>
   <head>
-    <meta charset="UTF-8" />
+     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="Booking.css" rel="stylesheet">
+
     <title>Royal Car Rentals</title>
-    <script
-  src="https://code.jquery.com/jquery-3.7.1.js"
-  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-  crossorigin="anonymous"></script>
-    
-    <style type="text/css">
-    	 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap');
+  </head>
 
+  <style type="text/css">
+       @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap');
+       
+/* Resetting default margin, padding, and font for all elements */
 * {
-  margin: 0;
-  padding: 0;
-  font-size: 14px;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Oswald", sans-serif;
 }
-
-body {
-  font-family: "Oswald", sans-serif;
-  margin: 0;
-  padding: 0;
-  font-size: 14px;
-  background-color: rgba(248, 249, 248, 0.5);
-  overflow-x: hidden;
+input[type=radio] {
+  margin-right:10px;
 }
-	input[type="radio"], input[type="checkbox"] {
-		    box-sizing: border-box;
-		    padding: 0;
-		}
-    	.booking{
-    		padding-top: 2%;
-    	}
-    	.booking button{
-    		background-color: orange;
-    		color: whitesmoke;
-    		border-radius: 0;
-    		margin-top: 4%;
-    	}
-    	.split {
-		  height: 100%;
-		  width: 50%;
-		  
-		  z-index: 1;
-		  top: 0;
-		  padding-top: 2%;
-		}
+    form{
+      padding-left: 5rem;
+      background-color: white;
+      width: 60%;
+      height:119%;
+    }
+    .form-control {
+    display: block;
+    width: 140%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+    .rowTab{
+          margin-bottom: 16px;
+        width: 50%;
+    }
+  
 
-		.split h1{
-			text-align: left;
-			margin-bottom: 3%;
-		}
-
-		.left {
-		  left: 0;
-		  
-		}
-		.right {
-		  right: 0;
-		}
-		.centered {
-		 
-		  left: 50%;
-		  transform: translate(-34%, -58%);
-		  text-align: center;
-		  margin-left: 38rem;
-		}
-
-		.last {
-		 
-		  left: 50%;
-		  transform: translate(-34%, -111%);
-		  text-align: center;
-		  margin-left: 38rem;
-		  background-color: #2B2E4A;
-		  padding-bottom: 5%;
-		  color: whitesmoke;
-		  padding-left: 7%;
-		}
-		.custom-control-input {
-			    position: absolute;
-			    left: 0;
-			    z-index: -1;
-			    width: 1rem;
-			    height: 1.25rem;
-			   
-		}
-		label{
-			margin-left: 21%;
-		}
-		.custom-control-label::after {
-			position: absolute;
-			top: .25rem;
-			left: -1.5rem;
-			display: block;
-			width: 1rem;
-			height: 1rem;
-			content: "";
-			background: no-repeat 50% / 50% 50%;
-		}
-
-		.container {
-		  display: block;
-		  position: relative;
-		  padding-left: 35px;
-		  margin-bottom: 12px;
-		  cursor: pointer;
-		  font-size: 1rem;
-		  -webkit-user-select: none;
-		  -moz-user-select: none;
-		  -ms-user-select: none;
-		  user-select: none;
-		  width: 80px;
-		}
-
-	/* Hide the browser's default radio button */
-	.container input {
-	  position: absolute;
-	  opacity: 0;
-	  cursor: pointer;
-	}
-
-	/* Create a custom radio button */
-	.checkmark {
-	  position: absolute;
-	  top: 0;
-	  left: 0;
-	  height: 25px;
-	  width: 25px;
-	  background-color: #eee;
-	  border-radius: 50%;
-	}
-
-	/* On mouse-over, add a grey background color */
-	.container:hover input ~ .checkmark {
-	  background-color: #ccc;
-	}
-
-	/* When the radio button is checked, add a blue background */
-	.container input:checked ~ .checkmark {
-	  background-color: #2196F3;
-	}
-
-	/* Create the indicator (the dot/circle - hidden when not checked) */
-	.checkmark:after {
-	  content: "";
-	  position: absolute;
-	  display: none;
-	}
-
-	/* Show the indicator (dot/circle) when checked */
-	.container input:checked ~ .checkmark:after {
-	  display: block;
-	}
-
-	/* Style the indicator (dot/circle) */
-	.container .checkmark:after {
-	 	top: 9px;
-		left: 9px;
-		width: 8px;
-		height: 8px;
-		border-radius: 50%;
-		background: white;
-	}
-	.datetimepicker {
-	display: inline-flex;
-	align-items: center;
-	background-color: #fff;
-	border: 4px solid darkturquoise;
-	border-radius: 8px;
-	}
-	
-
-.banner_head {
-  width: 100%;
-  background-color: black;
-  position: fixed;
-  top: 0;
-  z-index: 1000;
-}
   /* CSS for main section */
 .intro {
   display: flex;
@@ -190,7 +52,7 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 520px;
+  height: 320px;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%), url("https://cdn.pixabay.com/photo/2016/03/26/22/34/car-1281640_1280.jpg");
   background-size: cover;
   background-position: center;
@@ -226,823 +88,893 @@ body {
   cursor: pointer;
   box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.4)
 }
-#logo {
-  color: ghostwhite;
-  font-size: 140%; /* Adjust the font size as needed */
-  text-decoration: none;
-  display: inline-block;
-}
-
-.brand-name {
-  font-style: italic; /* Italicize the brand name */
-  vertical-align: middle; /* Align the text vertically with the cart symbol */
-  font-size: 110%;
-}
-
-#logo :hover {
-  color: white;
-}
-
-
-.topnav {
-  overflow: hidden;
-  background-color: #e9e9e9;
-  height: 50px;
-}
-
-.topnav .search-container {
-  float: right;
-}
-
-.topnav {
-  overflow: hidden;
-  background-color: black;
-}
-
-.topnav .search-container {
-  float: right;
-}
-
-.topnav input[type=text] {
-  padding: 6px;
-  margin-top: 8px;
-  font-size: 17px;
-  border: none;
-}
-article{
-  font-size: 13px;
-  margin-bottom: 5px;
-}
-#quantity-order{
-  width:60px;
-  height: 29px;
-  padding-left: 5px;
-}
-#order-quantity{
-  width: 330px;
-}
-
-#order-quantity .qty {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  text-align: center;
-}
-
-
-.topnav .search-container button:first-of-type {
-  float: right;
-  padding: 6px;
-  margin-top: 4px;
-  background: red;
-  font-size: 17px;
-  border: none;
-  cursor: pointer;
-  border-radius: 0px;
-}
-
-.topnav .search-container button:hover:first-of-type {
-  background: #ccc;
-}
-
-.topnav .search-container button {
-  background: black;
-  font-size: 17px;
-  color: white;
-  border-radius: 0;
-  padding: 6px;
-  margin-top: 4px;
-}
-
-.topnav .search-container button:hover {
-  background: #ccc;
-  color:#0b0a0a;
-}
-
-.topnav input[type=text] {
-  padding: 6px;
-  margin-top: 4px;
-  font-size: 17px;
-  border: none;
-}
-
-
-.navbar{
-  margin:auto;
-  padding: 7px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.navbar ul li{
-  list-style: none;
-  display: inline-block;
-  margin: 20px; 
-  position: relative;  
-}
-
-.navbar ul li a{
-  text-decoration: none;
-  color: white;
-  text-transform: uppercase;
-  font-size: 70%;
-}
-
-.navbar ul {
-  display: none;
-  flex-direction: column;
-  position: absolute;
-  top: 100%; /* Adjust as needed */
-  left: 0;
-  width: 100%;
-  background-color: black;
-  z-index: 1000;   
-}
-
-.head{
-  display: none;
-}
-
-.navbar ul.show {
-  display: flex;
-  flex-direction: column;
-}
-
-.navbar ul li {
-  width: 100%;
-  text-align: center;
-  margin: 10px 0;
-}
-
-.menu-btn {
-  display: block;
-  color: white;
-  cursor: pointer;
-}
-
-.hidden-checkbox {
-  display: none; /* Hide the checkbox visually */
-}
-
-#menuToggle:checked + .menu-btn + ul {
-  display: flex;
-}
-
-.navbar ul li::after{
-  content: '';
-  height: 3px;
-  width: 0%;
-  background: red;
-  position:absolute;
-  left: 0;
-  bottom: -10px;
-  transition: 0.5s;
-}
-
-.navbar ul li a:hover::after,
-.navbar ul li a:focus::after {
-  width: 100%;
-}
-
-main {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  box-sizing: border-box; 
-  margin-top: -40px;
-  margin-left: 0;
-}
-
-
-aside {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  margin-left: 0px;
-  margin-top: 45px;
-  width: 100%;
-  position: relative;
-  padding-top: 25px;
+.overlay {
+  position: fixed;
   top: 0;
+  bottom: 0;
   left: 0;
-  box-shadow: none;
-  border-radius: 7px;
-  box-sizing: border-box;
-  height: 80px;
-  margin-left: -5px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
 }
 
-aside div {
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  padding: 8px;
-  margin-bottom: 50px;
-  border: 1px solid #ddd;
-  background-color: #fff;
+.popup {
+  margin: 80px 530px;
+  padding: 20px;
+  background: #fff;
   border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  text-align: center;
-  height: 30px;
-  width: 90%;
-  margin-left: 10px;
-  font-size: 10px;
+  width: 30%;
+  position: relative;
+  transition: all 5s ease-in-out;
+  border: 12px solid yellowgreen;
 }
 
-aside div:hover {
-  background-color: #1e1d1d;
-  color: #f4f4f4;
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
 }
-
-aside h2 {
-  display: none;
-}
-
-.product-grid {
-  margin-top: -10px;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  flex: 1;
-  justify-content: center;
-  transition: transform 0.2s ease-in-out;
-  gap: 15px;
-}
-main .find{
-    text-align: center;
-    font-size: 200%;
-    padding: 4%;
-    color:  #2B2E4A;
-    width: 95%;
-}
-
-
-.product:hover {
-  transform: scale(1.05);
-}
-
-.product {
-  background-color: #f4f4f4;
-  padding: 35px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  text-align: center;
-  height: auto;
-  width: 47%;
-  box-shadow: 2px 2px 3px #959796;
-  padding-bottom: 15px;
-}
-
-.product img {
-  max-width: 100%;
-  height: 225px;
-  width: 260px;
-  border-radius: 4px;
-}
-
-.product h4 {
-  font-size: 1.2em;
-  margin-bottom: 10px;
-}
-
-.product p.price {
-  font-weight: bold;
-  font-size: 0.9em;
-  margin-bottom: 10px;
-}
-
-.product button {
-  background-color: orange;
-  color: rgb(250, 250, 250);
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.1s ease-in-out;
-}
-
-.product hover{
-  background-color: #2B2E4A;
-}
-.product button:hover {
-  background-color: #2B2E4A;
-  color: #0b0a0a;
-}
-
-.banner {
-  text-align: center;
-  margin-top: -10px;
-}
-
-.banner img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
-
-.container a{
-  text-decoration: none;
-  color: #0b0a0a;
-}
-
-.ft {
-  display: none;
-}
-.two {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.foo {
-  background-color: black;
-  height: 50px;
-  width: 200px;
-  border: 3px solid red;
-  text-align: center;
-  padding-top: 12px;
-  transform-origin: right bottom;
-  transform: skewY(10deg);
-}
-.o {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.ftoo,
-.fto {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0%;
-  text-align: center;
-}
-.two {
-  display: none;
-}
-
-ul li a{
-  text-decoration: none;
-  color: black;
-}
-
-ul p a{
-  text-decoration: none;
-}
-
-button {
-  font-family: "Oswald", sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  /* color: #edf0f1; */
-  color: white;
-  border: 9px solid rgb(60, 40, 25);
-  text-decoration: none;
-}
-button {
-  /* margin-left: 20px; */
-  padding: 9px 25px;
-  /* background-color: rgba(0, 136, 169, 1); */
-  background-color:black;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: all 0.3s ease 0s;
-}
-button:hover {
-  /* background-color: rgba(0, 136, 169, 0.8); */
-  background-color: white;
-  color: black;
-}
-.footer {
-  background-color: cadetblue;
-}
-.one,
-.two {
-  text-align: justify;
-  /* height: 200px; */
-  font-family: "Montserrat", sans-serif;
-  font-size: 20px;
-  padding: 15px 15px;
-}
-.one,
-.two {
-  text-align: center;
-}
-
-.foo {
-  background-color: black;
-  height: 50px;
-  width: 200px;
-  border: 3px solid red;
-  text-align: center;
-  padding-top: 12px;
-  transform-origin: right bottom;
-  transform: skewY(10deg);
-}
-.foo,
-#msgg {
-  margin: 30px 30px;
-  color: white;
-  /* margin-top: 60px;
-  margin-bottom: 60px; */
-}
-
-#msgg {
-  color: black;
-  font-weight: bolder;
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
   font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
 }
-.butt {
-  background-color: red;
-  border: none;
-  border-radius: 70px;
-  cursor: pointer;
-  transition: all 0.3s ease 0s;
-  color: white;
-  /* margin-left: 100px; */
+.popup .close:hover {
+  color: #06D85F;
 }
-.ftoo,
-.fto {
-  vertical-align: top;
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
 }
-li {
-  list-style-type: none;
-  margin-top: 3px;
-  padding-top: 5px;
-}
-#ttt {
-   text-align: center;
-    padding-bottom: 8px;
-    padding-top: 8px;
-    color: black;
-    opacity: 1;
-    font-size: 13px;
-}
-.three {
-  /* vertical-align: top; */
-  background-color: whitesmoke;
+.products button{
+  background-color: #2B2E4A;
 }
 
-order{
-  margin: 16px 0;
-    height: 1px;
-    background: #ececec;
-
+/* Hide horizontal overflow in the body */
+body {
+    overflow-x: hidden;
 }
-/* Styles for screens between 481px and 768px (tablet) */
-@media only screen and (min-width: 481px) and (max-width: 768px){
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-size: 17px;
-  }
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
 
-  main {
-    margin-top: 30px;
-    flex-direction: row;
-    align-items: flex-start;
-  }
-
-  .container{
-    display: flex;
+/* Styling for the fixed navigation bar at the top of the page */
+.banner_head {
     width: 100%;
-    margin-top: -20px;
+    background-color: black;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Style for the list */
+.hover-list {
+    display: none; /* Hide the list by default */
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
   }
 
-  aside {
-    font-size: 14px;
-    flex-direction: column;
-    position: sticky;
-    top: 60px;
-    width: 28%;
-    box-shadow: 2px 2px 3px #959796;
-    background-color: red;
-    height: auto;
-    left: 0;
-    margin-right: 1.5em;
-    height: 45em;
-    margin-top: 40px;
-  }
-
-  aside div{
-    font-size: 13px;
-    margin:auto;
-    margin-bottom: 50px;
-    width: 90%;
-  }
-
-  aside h2 {
-    display: block;
-    margin-bottom: 50px;
-    text-align: center;
-  }
-
-  .product-grid {
-    margin-left: auto;
-    margin-top: 20px;
-    width: 200px;
-    justify-content: space-between;
-  }
-
-  .product {
-    padding: 5px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    text-align: center;
-    height: auto;
-    width: 45%;
-    padding-bottom: 15px;
-  }
-  .banner{
-    margin-top: 20px;
-  }
-
-  .foo,
-  #msgg,
-  .butt {
-    display: inline-block;
-  }
-  .ftoo,
-  .fto,
-  .ft {
-    display: inline-block;
-
-    margin: 20px 20px;
-    padding-bottom: 4px;
-    padding-right: 80px;
-    vertical-align: top;
-  }
-  .ft {
-    opacity: 0.7;
-    width: 100%;
-    height: 30%;
-    margin: 0px;
-    padding-bottom: 0px;
-    padding-right: 0px;
-  }
-  #map {
-    width: 100%;
-  }
-  .o {
-    display: block;
-  }
-
-  .two {
-    display: block;
-  }
-  .butt {
-    text-align: justify;
-  }
-  .o .foo {
-    align-items: stretch;
-  }
-  .o .ftoo .fto {
-    align-items: stretch;
-  }
-
-  .ftoo h1{
-    font-size: 2em;
-  }
-  strong{
-    color: #0b0a0a;
+  /* Style for list items */
+  .hover-list li {
+    padding: 12px 16px;
     text-decoration: none;
+    display: block;
+    color: #333;
   }
-
+  
+/* Styling for the logo link */
+#logo {
+    color: ghostwhite;
+    font-size: 140%; /* Adjust the font size as needed */
+    text-decoration: none;
+    display: inline-block;
+    
 }
 
-/* styles for screens above 769px */
-@media only screen and (min-width: 769px) {
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-size: 17px;
-  }
-  body {
-    font-family: "Oswald", sans-serif;
-    margin: 0;
-    padding: 0;
-  }
+/* Styling for the italicized brand name in the logo */
+.brand-name {
+    font-style: italic;
+    vertical-align: middle;
+    font-size: 120%;
+}
 
-  .navbar{
+/* Hover effect for the logo */
+#logo :hover {
+    color: white;
+}
+
+/* Styling for the navigation bar */
+.navbar{
     margin:auto;
-    padding: 20px;
+    padding: 7px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.navbar ul {
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    top: 0;
-    width: auto;
-    background-color: transparent;
-    padding-bottom: 0;
-}
-
-.navbar ul.show {
-    display: flex;
-}
-
+/* Styling for the navigation links in the bar */
 .navbar ul li{
     list-style: none;
     display: inline-block;
-    margin: 0 20px; 
+    margin: 20px; 
     position: relative;  
-    white-space: nowrap;
 }
 
+/* Styling for the navigation link text */
 .navbar ul li a{
     text-decoration: none;
     color: white;
     text-transform: uppercase;
-    font-size: 100%;
+    font-size: 70%;
 }
 
-.navbar ul li::after{
+/* Styling for the dropdown menu in the navigation bar */
+.navbar ul {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: lightblue;
+    z-index: 1000;   
+}
+
+/* Styling for the heading section of the webpage */
+.head{
+    display: none;
+}
+
+/* Displaying the dropdown menu when toggled */
+.navbar ul.show {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Styling for individual items in the dropdown menu */
+.navbar ul li {
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+}
+
+/* Styling for the menu button */
+.menu-btn {
+    display: block;
+    color: white;
+    cursor: pointer;
+}
+
+/* Hiding the checkbox used for menu toggle */
+.hidden-checkbox {
+    display: none;
+}
+
+/* Displaying the navigation links when the checkbox is checked */
+#menuToggle:checked + .menu-btn + ul {
+    display: flex;
+}
+
+/* Styling for the underline effect on navigation links */
+.navbar ul li::after {
     content: '';
     height: 3px;
     width: 0%;
-    background: red;
+    background:  lightblue;
     position:absolute;
     left: 0;
     bottom: -10px;
     transition: 0.5s;
 }
 
-.navbar ul li:hover::after{
+/* Adjusting the width of the underline effect on hover or focus */
+.navbar ul li a:hover::after,
+.navbar ul li a:focus::after {
     width: 100%;
 }
 
-.menu-btn {
-    display: none;
-}
-
-.hidden-checkbox {
-    display: none; /* Hide the checkbox visually */
-  }
-
-#menuToggle:checked + .menu-btn + ul {
-    display: none;
-}
-
-  main {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 20px;
-    box-sizing: border-box;
-    margin-top: 80px;
-  }
-
-  .container{
-    display: flex;
-    margin-top: -25px;
-
-  }
-
-  aside {
-    display: flex;
-    flex-direction: column;
-    /* justify-content: center; */
-    background-color: red;
-    margin-top: 10px;
-    width: 20%;
-    position:sticky;
-    left: 0;
-    box-shadow: 2px 2px 3px #959796;
-    border-radius: 7px;
-    box-sizing: border-box;
-    height: 40em; 
-    margin-right: 1.5em;
-  }
-
-  aside div{
-    width: 90%;
-    font-size: 16px;
-    height: 2.5em;
-    margin-bottom: 20px;
-  }
-
-  aside div:hover {
-    background-color: #1e1d1d;
-    color: #f4f4f4;
-  }
-
-  aside h2 {
-    margin-bottom: 30px;
+/* Styling for the offer box section */
+.offer_box {
+    padding-top: 65px;
+    padding-bottom: 15px;
+    border: 1px solid #000;
+    background-color:  lightblue;
     text-align: center;
-    display: block; 
-  }
+    font-size: 70%;
+}
 
-  .product-grid {
-    margin-left: auto;
+/* Styling for links within the offer box */
+.offer_box a{
+    color: black;
+}
+
+/* Hover effect for links within the offer box */
+.offer_box a:hover {
+    color:  white;
+}
+
+/* Styling for the grid container */
+.grid {
+    padding: 1rem;
+    overflow: hidden;
+}
+
+/* Styling for images within the slider */
+.slider img {
+    max-height: 100%;
+    padding: 15px;
+    border: #2196F3; /* Adjust max-height for smaller screens */
+    width: 3580px;
+}
+
+/* Styling for the slider wrapper */
+.slider-wrapper {
+    position: relative;
+    margin: 0 auto;
+}
+
+/* Styling for the slider container */
+.slider {
+    display: flex;
+    position: relative;
+    flex-direction: column; /* Display images in a column */
+    height: auto;
+}
+
+/* Styling for the products section */
+.products {
+    padding-left: 20rem; /* Adjust padding for smaller screens */
+    border: 44px solid;
+    background-color: black;
+}
+
+.products p{
+  font-weight: bold;
+  font-size: 0.9em;
+  margin-bottom: 10px;
+}
+
+/* Styling for the main products container */
+.main-products{
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row;
-    flex: 1;
-    justify-content: space-between;
-    transition: transform 0.2s ease-in-out;
-    gap: 15px;
-    margin-top: 0;
-  }
+    gap: 50px;  
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    margin-left: 25%; /* Set left margin to auto for center alignment */
+    margin-right: auto;
+}
 
-  .product {
-    background-color: #f4f4f4;
-    padding: 5px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+/* Styling for the products heading */
+.products h1{
+    text-align: left;
+    font-size: 150%;
+    padding: 4%;
+    color:  #2B2E4A;
+}
+
+/* Hover effect for product content heading */
+.product-content h3:hover{
+    border: 0.5px solid black;
+    color:  #2B2E4A;
+    background: white;
+    cursor: pointer;
+    z-index: 100;
+}
+
+/* Styling for individual product content */
+.product-content {
+    padding : 0px;
+}
+
+/* Styling for the inner
+/* Styling for individual products within the main container */
+.inner-products{
+    flex: 1 1 350px;
+    position: relative;
+}
+
+/* Styling for the product content heading */
+.product-content h3{
+    position: absolute;
+    color: white;
+    background-color:  #2B2E4A;
+    padding: 0.2rem 0.5rem;
+    z-index: 100;
+}
+
+/* Styling for images within the inner products */
+.inner-products img {
+    cursor: pointer;
+    max-width: 60%;
+    padding: 1rem;
+    animation: float 3s linear infinite;
+}
+
+/* Animation for the floating effect of inner product images */
+@keyframes float {
+    0%, 100%{
+        transform: translateY(0rem);
+    }
+    50%{
+        transform: translateY(3rem);
+    }   
+}
+
+/* Styling for images within the inner blog content */
+.inner-blog-content img{
+    width: 150px;
+    padding-top: 40px;
+}
+
+/* Styling for the our blog section */
+.our-blog{
+    padding: 2rem 7%;
+    display: flex;
+    flex-direction: column; /* Adjusted to column for vertical alignment of heading and blogs */
+}
+
+/* Styling for the heading within the our blog section */
+.our-blog h1 {
+    padding-bottom: 2%;
     text-align: center;
-    height: auto;
-    width: 23%;
-    padding-bottom: 15px;
-  }
+    color:  lightblue;
+    font-size: 200%;
+}
 
-  .banner{
-    margin-top: 10px;
-  }
+/* Additional styling for images within inner blog content */
+.inner-blog-content img{
+    width: 150px;
+    padding-top: 40px;
+    padding-right: 20px;
+}
 
-  .banner img{
-    height: 450px;
-    width: 1280px;
-  }
+/* Styling for the main blogs container */ 
+.main-blogs{ 
+    gap: 1rem;
+    flex-wrap: wrap;
+    display: flex;
+}
 
-  .foo,
-  #msgg,
-  .butt {
-    display: inline-block;
-  }
-  .ftoo,
-  .fto,
-  .ft {
-    display: inline-block;
+/* Styling for individual blogs within the main blogs container */
+.inner-blogs{
+    flex: 1 1 30rem;
+}
 
-    margin: 20px 20px;
-    padding-bottom: 4px;
-    padding-right: 80px;
-    vertical-align: top;
-  }
-  .ft {
-    opacity: 0.7;
-    width: 100%;
-    height: 30%;
-    margin: 0px;
-    padding-bottom: 0px;
-    padding-right: 0px;
-  }
-  #map {
-    width: 100%;
-  }
-  .o {
-    display: block;
-  }
+/* Styling for the content within each blog post */
+.blog-inner-content{
+    display: flex;
+    text-align: left;
+}
 
-  .two {
-    display: block;
-  }
-  .butt {
+/* Styling for the heading within the inner blog content */
+.inner-blog-content h2{
+    font-size: 25px;
+}
+
+/* Styling for paragraphs within the inner blog content */
+.inner-blog-content p{
+    font-size: 14px;
     text-align: justify;
+}
+
+/* Styling for the reviews section */
+.reviews{
+    padding: 3rem 7%;
+}
+
+/* Styling for the heading within the reviews section */
+.reviews h1{
+    font-size: 26px;
+    color:  lightblue;
+    text-align: center;
+}
+
+/* Styling for the review content box container */
+.review-content-box{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction:row;
+    gap: 50px;
+    padding-top: 2.5rem;
+    padding-bottom: 2rem;
+}
+
+/* Styling for individual review content boxes */
+.review-content{ 
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    background-color:  lightblue;
+    transition: transform 0.3s ease-in-out, opacity 0.5s ease-in-out; /* Add smooth transitions for scale and opacity */
+    animation: fadeIn 0.5s forwards;
+    clip-path: polygon(20% 0, 80% 0, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0 80%, 0 20%);
+    background: linear-gradient(45deg, #4CAF50, #2196F3);
+    font-size: 100%; /* Adjusted font size */
+    width: 100%; /* Set a fixed width for the hexagon */
+    height: 100%; /* Set a fixed height for the hexagon */
+    margin: 5px;
+    display: flex;
+}
+
+/* Hover effect for review content boxes */
+.review-content:hover {
+    transform: scale(1.05); /* Enlarge the box on hover */
   }
-  .ftoo h1{
-    font-size: 2em;
+
+/* Animation for fading in review content boxes */
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
-  strong{
-    color: #0b0a0a;
-    text-decoration: none;
+
+/* Styling for paragraphs within review content boxes */
+.review-content p{
+    text-align: center;
+}
+
+/* Additional styling for the footer section */
+.ft {
+    display: none;
   }
-  .order{
-    margin: 16px 0;
-      height: 1px;
-      background: #ececec;
-      width: 900px;
+  .two {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   
-}
+  .foo {
+    background-color: black;
+    height: 50px;
+    width: 200px;
+    border: 3px solid  lightblue;
+    text-align: center;
+    padding-top: 12px;
+    transform-origin: right bottom;
+    transform: skewY(10deg);
+  }
+  .o {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .ftoo,
+  .fto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0%;
+    text-align: center;
+  }
+  .two {
+    display: none;
+  }
+  
+  
+  button {
+    font-family: "Oswald", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    /* color: #edf0f1; */
+    color: white;
+    border: 9px solid darkblue;
+    text-decoration: none;
+  }
+  button {
+    /* margin-left: 20px; */
+    padding: 9px 25px;
+    /* background-color: darkblue; */
+    background-color:black;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+  }
+  button:hover {
+    /* background-color: darkblue; */
+    background-color: white;
+    color: black;
+  }
+  .footer {
+    background-color:  cadetblue;
+  }
+  .one,
+  .two {
+    text-align: justify;
+    /* height: 200px; */
+    font-family: "Oswald", sans-serif;
+    font-size: 20px;
+    padding: 15px 15px;
+  }
+  .one,
+  .two {
+    text-align: center;
+  }
+  
+  .foo {
+    background-color: black;
+    height: 50px;
+    width: 200px;
+    border: 3px solid  lightblue;
+    text-align: center;
+    padding-top: 12px;
+    transform-origin: right bottom;
+    transform: skewY(10deg);
+  }
+  .foo,
+  #msgg {
+    margin: 30px 30px;
+    color: white;
+    /* margin-top: 60px;
+    margin-bottom: 60px; */
+  }
+  
+  #msgg {
+    color: black;
+    font-weight: bolder;
+    font-size: 30px;
+  }
+  .butt {
+    background-color:  lightblue;
+    border: none;
+    border-radius: 70px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    color: white;
+    /* margin-left: 100px; */
+  }
+  .ftoo,
+  .fto {
+    /* display: inline-block;
+    margin: 20px 20px;
+    padding-bottom: 4px;
+    padding-right: 80px; */
+    vertical-align: top;
+  }
+  li {
+    list-style-type: none;
+    margin-top: 3px;
+    padding-top: 5px;
+  }
+  #ttt {
+    text-align: center;
+    padding-bottom: 8px;
+    padding-top: 8px;
+    color: black;
+    opacity: 1;
+    font-size: 13px;
+  }
+  .three {
+    /* vertical-align: top; */
+    background-color: whitesmoke;
+  }
+
+  ul li a{
+    text-decoration: none;
+    color: black;
+  }
+  
+  ul p a{
+    text-decoration: none;
+    color: #000;
+  }
+
+  
+  /* Media query for screens with minimum width of 768px */
+  @media screen and (min-width: 768px) {
+    /* Adjust styling for elements with classes 'foo', 'msgg', and 'butt' on screens with minimum width of 768px */
+    .foo,
+      #msgg,
+      .butt {
+        display: inline-block;
+      }
+      .ftoo,
+      .fto,
+      .ft {
+        display: inline-block;
     
-    </style>
-  </head>
-	<body>
-		<head>
-			
-		</head>
-		<!--Navigation bar-->
-	 <nav>
+        margin: 20px 20px;
+        padding-bottom: 4px;
+        padding-right: 80px;
+        vertical-align: top;
+      }
+      .ft {
+        opacity: 0.7;
+        width: 100%;
+        height: 30%;
+        margin: 0px;
+        padding-bottom: 0px;
+        padding-right: 0px;
+      }
+  /* Adjust styling for element with id 'map' on screens with minimum width of 768px */
+      #map {
+        width: 100%;
+      }
+      .o {
+        display: block;
+      }
+    
+      .two {
+        display: block;
+      }
+      .butt {
+        text-align: justify;
+      }
+      .o .foo {
+        align-items: stretch;
+      }
+      .o .ftoo .fto {
+        align-items: stretch;
+      }
+    
+    }
+
+    @media only screen and (min-width: 768px) {
+
+        .foo,
+         #msgg,
+         .butt {
+           display: inline-block;
+         }
+         .ftoo,
+         .fto,
+         .ft {
+           display: inline-block;
+       
+           margin: 20px 20px;
+           padding-bottom: 4px;
+           padding-right: 80px;
+           vertical-align: top;
+         }
+         .ft {
+           opacity: 0.7;
+           width: 100%;
+           height: 30%;
+           margin: 0px;
+           padding-bottom: 0px;
+           padding-right: 0px;
+         }
+         #map {
+           width: 100%;
+         }
+         .o {
+           display: block;
+         }
+       
+         .two {
+           display: block;
+         }
+         .butt {
+           text-align: justify;
+         }
+       
+       }
+
+       
+
+@media screen and (min-width: 768px){
+    
+    .navbar{
+        margin:auto;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .navbar ul {
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        top: 0;
+        width: auto;
+        background-color: transparent;
+        padding-bottom: 0;
+    }
+
+    .navbar ul.show {
+        display: flex;
+    }
+
+    .navbar ul li{
+        list-style: none;
+        display: inline-block;
+        margin: 0 20px; 
+        position: relative;  
+        white-space: nowrap;
+    }
+    
+    .navbar ul li a{
+        text-decoration: none;
+        color: white;
+        text-transform: uppercase;
+        font-size: 100%;
+    }
+    
+    .navbar ul li::after{
+        content: '';
+        height: 3px;
+        width: 0%;
+        background: lightblue;
+        position:absolute;
+        left: 0;
+        bottom: -10px;
+        transition: 0.5s;
+    }
+    
+    .navbar ul li:hover::after{
+        width: 100%;
+    }
+
+    .menu-btn {
+        display: none;
+    }
+    
+    .hidden-checkbox {
+        display: none; /* Hide the checkbox visually */
+      }
+    
+    #menuToggle:checked + .menu-btn + ul {
+        display: none;
+    }
+
+    .offer_box {
+        padding-top: 85px;
+        font-size: 130%;
+    }
+
+    .inner-blog-content img{
+        padding-top: 20px;
+        padding-right: 20px;
+    }
+
+    .inner-blog-content h2{
+        padding-top: 20px;
+        padding-right: 20px;
+        
+    }
+
+    .inner-blog-content p{
+        padding-top: 20px;
+        padding-right: 20px;
+        font-size: 120%;
+        
+    }
+
+    .main-products{
+        margin-left: 10%; /* Set left margin to auto for center alignment */
+        margin-right: auto;
+    }
+
+    .inner-products img {
+        max-width: 80%;
+    }
+
+    .product-content h3{
+        padding: 0.7rem 1.3rem;
+    }
+
+    .products h1{
+        font-size: 200%;
+    }
+
+}
+
+@media screen and (min-width:1279px){
+/* Adjust padding for the grid container on screens with minimum width of 1279px */
+    .grid {
+        padding: 2rem;
+        overflow: hidden;
+    }
+
+    /* Adjust styling for images within the slider on screens with minimum width of 1279px */
+    .slider img {
+        max-height: 100%; 
+        padding: 0px; 
+        flex: 0 0 100%;
+        object-fit: contain;
+        max-height: 100%;
+        display: block;
+        border: #2196F3; /* Adjust max-height for smaller screens */
+    }
+
+    .slider {
+        display: flex;
+        animation: slideAnimation 11s linear infinite, fadeIn 3s ease-out 15s infinite;
+        box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0%);
+        border-radius: 0.5rem;
+        position: relative;
+        height: 300px;
+        flex-direction: row;
+    }
+    
+    @keyframes slideAnimation {
+        0%{
+            transform: translateX(0);
+        }
+        25%{
+            transform: translateX(0);
+        }
+        35%{
+            transform: translateX(-100%);
+        }
+        45%{
+            transform: translateX(-100%);
+        }
+        55%{
+            transform: translateX(-200%);
+        }
+        75%{
+            transform: translateX(-200%);
+        }
+        85%{
+            transform: translateX(-100%);
+        }
+        90%{
+            transform: translateX(-100%);
+        }
+        100%{
+            transform: translateX(0);
+        }
+    }
+    
+    .slider img:nth-child(4),
+    .slider img:nth-child(5) {
+        position: absolute;
+        top: 0;
+        left: 100%;
+        opacity: 0;
+    }
+
+    /* Styling for specific images within the slider on screens with minimum width of 1279px */
+    .slider img:nth-child(6),
+    .slider img:nth-child(7) {
+        position: absolute;
+        top: 0;
+        left: 200%;
+        opacity: 0;
+    }
+
+    /* Keyframes animation for fading in images within the slider */
+    @keyframes fadeIn {
+        80%, 100% {
+            opacity: 1;
+        }
+    }
+
+    /* Styling for the slider navigation container on screens with minimum width of 1279px */
+    .slider-nav {
+        display: flex;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1;
+    }
+}
+
+}
+
+  </style>
+  <body>
+    <header></header>
+     <nav>
          <div class="banner_head">
             <div class="navbar">
                 <!-- Logo and Navigation Links -->
@@ -1057,13 +989,15 @@ order{
                     <li><a href="/">Home</a></li>
                     <li><a href="/cars">Cars</a></li>
                     <li><a href="/home">Purchase</a></li>
+                    <li><a href="/booking">Booking</a></li>
                     <li><a href="./html/about.html">About</a></li>
                     <li><a href="./html/contact.html">Contact </a></li>
-                </ul>                                                                                                                                      
+                </ul>                                                                                                                                                                                                                                                                                                                                                                                                  
             </div>
         </div>  
     </nav>
-    <banner>
+
+      <banner>
       <div>
           <div class="intro">
             <h1>Booking</h1>
@@ -1071,12 +1005,13 @@ order{
           </div>
     </banner>
     <main>
-		
-	<div class="booking">
+      
+  
+  <div class="products">
     
-    <form id="car-rental-form" method="POST" action="/data">
+    <form id="car-rental-form" method="POST" action="/book">
       <h1 id="title">Personal Information</h1>
-    <div class="split left">
+
       <div class="rowTab">
         <div class="rightTab">
           <input autofocus type="text" name="firstname" id="firstname" class="form-control" placeholder="First name" required>
@@ -1091,7 +1026,7 @@ order{
 
       <div class="rowTab">
         <div class="rightTab">
-          <input type="number" name="email" id="email" min="1900" max="2099" class="form-control" placeholder="Your Email" required>
+          <input type="text" name="email" id="email" class="form-control" placeholder="Your Email" required>
         </div>
       </div>
       
@@ -1101,10 +1036,6 @@ order{
         </div>
       </div>
       
-     
-     </div>
-
-      <div class="split right centered">
       <h1 id="title">Booking Detail</h1>
       <div class="rowTab">
         <div class="rightTab">
@@ -1120,19 +1051,17 @@ order{
 
       <div class="rowTab">
         <div class="rightTab">
-          <input type="datetime-local" name="pick" id="pick" class="form-control" title="Pickup Date" placeholder="" data-toggle="datetimepicker">
+          <input type="datetime-local" name="pickupdate" id="pickupdate" class="form-control" title="Pickup Date" placeholder="" data-toggle="datetimepicker">
         </div>
       </div>
       
       <div class="rowTab">
         <div class="rightTab">
-          <input type="datetime-local" name="mobile" id="mobile" class="form-control" title="Return Date" placeholder="Enter mobile number" required>
+          <input type="datetime-local" name="returndate" id="returndate" class="form-control" title="Return Date" placeholder="Enter mobile number" required>
           
         </div>
       </div>
 
-       	 
-      <div class="split right last">
       	<h1 id="title" style="padding-bottom: 10px;">Payment</h1>
       	<div class="rowTab">
       	
@@ -1148,18 +1077,17 @@ order{
 		  <input type="radio" name="radio">
 		  <span class="checkmark"></span>
 		</label>
-         <button id="submit" type="submit">Book Now</button>
+
+         
       </div>
-     
+      <button id="submit" type="submit">Book Now</button>
       </div>
-     
-     </div>
+
     
   </form>
 </div>
-		</main>
-		<footer>
-			
-		</footer>
-	</body>
+
+    </main>
+  </body>
+
 </html>

@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!--head section-->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="Booking.css" rel="stylesheet">
+    <title>Royal Car Rentals</title>
+    <script
+  src="https://code.jquery.com/jquery-3.7.1.js"
+  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+  crossorigin="anonymous"></script>
+    
+    <style type="text/css">
+    	 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Oswald", sans-serif;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  background-color: rgba(248, 249, 248, 0.5);
+  overflow-x: hidden;
+}
+	input[type="radio"], input[type="checkbox"] {
+		    box-sizing: border-box;
+		    padding: 0;
+		}
+    	.booking{
+    		padding-top: 2%;
+    	}
+    	.booking button{
+    		background-color: orange;
+    		color: whitesmoke;
+    		border-radius: 0;
+    		margin-top: 4%;
+    	}
+    	.split {
+		  height: 100%;
+		  width: 50%;
+		  
+		  z-index: 1;
+		  top: 0;
+		  padding-top: 2%;
+		}
+
+		.split h1{
+			text-align: left;
+			margin-bottom: 3%;
+		}
+
+		.left {
+		  left: 0;
+		  
+		}
+		.right {
+		  right: 0;
+		}
+		.centered {
+		 
+		  left: 50%;
+		  transform: translate(-34%, -58%);
+		  text-align: center;
+		  margin-left: 38rem;
+		}
+
+		.last {
+		 
+		  left: 50%;
+		  transform: translate(-34%, -111%);
+		  text-align: center;
+		  margin-left: 38rem;
+		  background-color: #2B2E4A;
+		  padding-bottom: 5%;
+		  color: whitesmoke;
+		  padding-left: 7%;
+		}
+		.custom-control-input {
+			    position: absolute;
+			    left: 0;
+			    z-index: -1;
+			    width: 1rem;
+			    height: 1.25rem;
+			   
+		}
+		label{
+			margin-left: 21%;
+		}
+		.custom-control-label::after {
+			position: absolute;
+			top: .25rem;
+			left: -1.5rem;
+			display: block;
+			width: 1rem;
+			height: 1rem;
+			content: "";
+			background: no-repeat 50% / 50% 50%;
+		}
+
+		.container {
+		  display: block;
+		  position: relative;
+		  padding-left: 35px;
+		  margin-bottom: 12px;
+		  cursor: pointer;
+		  font-size: 1rem;
+		  -webkit-user-select: none;
+		  -moz-user-select: none;
+		  -ms-user-select: none;
+		  user-select: none;
+		  width: 80px;
+		}
+
+	/* Hide the browser's default radio button */
+	.container input {
+	  position: absolute;
+	  opacity: 0;
+	  cursor: pointer;
+	}
+
+	/* Create a custom radio button */
+	.checkmark {
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  height: 25px;
+	  width: 25px;
+	  background-color: #eee;
+	  border-radius: 50%;
+	}
+
+	/* On mouse-over, add a grey background color */
+	.container:hover input ~ .checkmark {
+	  background-color: #ccc;
+	}
+
+	/* When the radio button is checked, add a blue background */
+	.container input:checked ~ .checkmark {
+	  background-color: #2196F3;
+	}
+
+	/* Create the indicator (the dot/circle - hidden when not checked) */
+	.checkmark:after {
+	  content: "";
+	  position: absolute;
+	  display: none;
+	}
+
+	/* Show the indicator (dot/circle) when checked */
+	.container input:checked ~ .checkmark:after {
+	  display: block;
+	}
+
+	/* Style the indicator (dot/circle) */
+	.container .checkmark:after {
+	 	top: 9px;
+		left: 9px;
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		background: white;
+	}
+	.datetimepicker {
+	display: inline-flex;
+	align-items: center;
+	background-color: #fff;
+	border: 4px solid darkturquoise;
+	border-radius: 8px;
+	}
+	
+
+.banner_head {
+  width: 100%;
+  background-color: black;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+  /* CSS for main section */
+.intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 520px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%), url("https://cdn.pixabay.com/photo/2016/03/26/22/34/car-1281640_1280.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.intro span{
+    color: orange;
+}
+.intro h1 {
+  font-family: sans-serif;
+  font-size: 60px;
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.intro p {
+  font-size: 20px;
+  color: #d1d1d1;
+  text-transform: uppercase;
+  margin: 20px 0;
+}
+
+.intro button {
+  background-color: #5edaf0;
+  color: #000;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.4)
+}
+#logo {
+  color: ghostwhite;
+  font-size: 140%; /* Adjust the font size as needed */
+  text-decoration: none;
+  display: inline-block;
+}
+
+.brand-name {
+  font-style: italic; /* Italicize the brand name */
+  vertical-align: middle; /* Align the text vertically with the cart symbol */
+  font-size: 110%;
+}
+
+#logo :hover {
+  color: white;
+}
+
+
+.topnav {
+  overflow: hidden;
+  background-color: #e9e9e9;
+  height: 50px;
+}
+
+.topnav .search-container {
+  float: right;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: black;
+}
+
+.topnav .search-container {
+  float: right;
+}
+
+.topnav input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+article{
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+#quantity-order{
+  width:60px;
+  height: 29px;
+  padding-left: 5px;
+}
+#order-quantity{
+  width: 330px;
+}
+
+#order-quantity .qty {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+}
+
+
+.topnav .search-container button:first-of-type {
+  float: right;
+  padding: 6px;
+  margin-top: 4px;
+  background: red;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+  border-radius: 0px;
+}
+
+.topnav .search-container button:hover:first-of-type {
+  background: #ccc;
+}
+
+.topnav .search-container button {
+  background: black;
+  font-size: 17px;
+  color: white;
+  border-radius: 0;
+  padding: 6px;
+  margin-top: 4px;
+}
+
+.topnav .search-container button:hover {
+  background: #ccc;
+  color:#0b0a0a;
+}
+
+.topnav input[type=text] {
+  padding: 6px;
+  margin-top: 4px;
+  font-size: 17px;
+  border: none;
+}
+
+
+.navbar{
+  margin:auto;
+  padding: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar ul li{
+  list-style: none;
+  display: inline-block;
+  margin: 20px; 
+  position: relative;  
+}
+
+.navbar ul li a{
+  text-decoration: none;
+  color: white;
+  text-transform: uppercase;
+  font-size: 70%;
+}
+
+.navbar ul {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 100%; /* Adjust as needed */
+  left: 0;
+  width: 100%;
+  background-color: black;
+  z-index: 1000;   
+}
+
+.head{
+  display: none;
+}
+
+.navbar ul.show {
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar ul li {
+  width: 100%;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.menu-btn {
+  display: block;
+  color: white;
+  cursor: pointer;
+}
+
+.hidden-checkbox {
+  display: none; /* Hide the checkbox visually */
+}
+
+#menuToggle:checked + .menu-btn + ul {
+  display: flex;
+}
+
+.navbar ul li::after{
+  content: '';
+  height: 3px;
+  width: 0%;
+  background: red;
+  position:absolute;
+  left: 0;
+  bottom: -10px;
+  transition: 0.5s;
+}
+
+.navbar ul li a:hover::after,
+.navbar ul li a:focus::after {
+  width: 100%;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box; 
+  margin-top: -40px;
+  margin-left: 0;
+}
+
+
+aside {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-left: 0px;
+  margin-top: 45px;
+  width: 100%;
+  position: relative;
+  padding-top: 25px;
+  top: 0;
+  left: 0;
+  box-shadow: none;
+  border-radius: 7px;
+  box-sizing: border-box;
+  height: 80px;
+  margin-left: -5px;
+}
+
+aside div {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  padding: 8px;
+  margin-bottom: 50px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  height: 30px;
+  width: 90%;
+  margin-left: 10px;
+  font-size: 10px;
+}
+
+aside div:hover {
+  background-color: #1e1d1d;
+  color: #f4f4f4;
+}
+
+aside h2 {
+  display: none;
+}
+
+.product-grid {
+  margin-top: -10px;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  flex: 1;
+  justify-content: center;
+  transition: transform 0.2s ease-in-out;
+  gap: 15px;
+}
+main .find{
+    text-align: center;
+    font-size: 200%;
+    padding: 4%;
+    color:  #2B2E4A;
+    width: 95%;
+}
+
+
+.product:hover {
+  transform: scale(1.05);
+}
+
+.product {
+  background-color: #f4f4f4;
+  padding: 35px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-align: center;
+  height: auto;
+  width: 47%;
+  box-shadow: 2px 2px 3px #959796;
+  padding-bottom: 15px;
+}
+
+.product img {
+  max-width: 100%;
+  height: 225px;
+  width: 260px;
+  border-radius: 4px;
+}
+
+.product h4 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.product p.price {
+  font-weight: bold;
+  font-size: 0.9em;
+  margin-bottom: 10px;
+}
+
+.product button {
+  background-color: orange;
+  color: rgb(250, 250, 250);
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.1s ease-in-out;
+}
+
+.product hover{
+  background-color: #2B2E4A;
+}
+.product button:hover {
+  background-color: #2B2E4A;
+  color: #0b0a0a;
+}
+
+.banner {
+  text-align: center;
+  margin-top: -10px;
+}
+
+.banner img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.container a{
+  text-decoration: none;
+  color: #0b0a0a;
+}
+
+.ft {
+  display: none;
+}
+.two {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.foo {
+  background-color: black;
+  height: 50px;
+  width: 200px;
+  border: 3px solid red;
+  text-align: center;
+  padding-top: 12px;
+  transform-origin: right bottom;
+  transform: skewY(10deg);
+}
+.o {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.ftoo,
+.fto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0%;
+  text-align: center;
+}
+.two {
+  display: none;
+}
+
+ul li a{
+  text-decoration: none;
+  color: black;
+}
+
+ul p a{
+  text-decoration: none;
+}
+
+button {
+  font-family: "Oswald", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  /* color: #edf0f1; */
+  color: white;
+  border: 9px solid rgb(60, 40, 25);
+  text-decoration: none;
+}
+button {
+  /* margin-left: 20px; */
+  padding: 9px 25px;
+  /* background-color: rgba(0, 136, 169, 1); */
+  background-color:black;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+button:hover {
+  /* background-color: rgba(0, 136, 169, 0.8); */
+  background-color: white;
+  color: black;
+}
+.footer {
+  background-color: cadetblue;
+}
+.one,
+.two {
+  text-align: justify;
+  /* height: 200px; */
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  padding: 15px 15px;
+}
+.one,
+.two {
+  text-align: center;
+}
+
+.foo {
+  background-color: black;
+  height: 50px;
+  width: 200px;
+  border: 3px solid red;
+  text-align: center;
+  padding-top: 12px;
+  transform-origin: right bottom;
+  transform: skewY(10deg);
+}
+.foo,
+#msgg {
+  margin: 30px 30px;
+  color: white;
+  /* margin-top: 60px;
+  margin-bottom: 60px; */
+}
+
+#msgg {
+  color: black;
+  font-weight: bolder;
+  font-size: 30px;
+}
+.butt {
+  background-color: red;
+  border: none;
+  border-radius: 70px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  color: white;
+  /* margin-left: 100px; */
+}
+.ftoo,
+.fto {
+  vertical-align: top;
+}
+li {
+  list-style-type: none;
+  margin-top: 3px;
+  padding-top: 5px;
+}
+#ttt {
+   text-align: center;
+    padding-bottom: 8px;
+    padding-top: 8px;
+    color: black;
+    opacity: 1;
+    font-size: 13px;
+}
+.three {
+  /* vertical-align: top; */
+  background-color: whitesmoke;
+}
+
+order{
+  margin: 16px 0;
+    height: 1px;
+    background: #ececec;
+
+}
+/* Styles for screens between 481px and 768px (tablet) */
+@media only screen and (min-width: 481px) and (max-width: 768px){
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 17px;
+  }
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  main {
+    margin-top: 30px;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .container{
+    display: flex;
+    width: 100%;
+    margin-top: -20px;
+  }
+
+  aside {
+    font-size: 14px;
+    flex-direction: column;
+    position: sticky;
+    top: 60px;
+    width: 28%;
+    box-shadow: 2px 2px 3px #959796;
+    background-color: red;
+    height: auto;
+    left: 0;
+    margin-right: 1.5em;
+    height: 45em;
+    margin-top: 40px;
+  }
+
+  aside div{
+    font-size: 13px;
+    margin:auto;
+    margin-bottom: 50px;
+    width: 90%;
+  }
+
+  aside h2 {
+    display: block;
+    margin-bottom: 50px;
+    text-align: center;
+  }
+
+  .product-grid {
+    margin-left: auto;
+    margin-top: 20px;
+    width: 200px;
+    justify-content: space-between;
+  }
+
+  .product {
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    height: auto;
+    width: 45%;
+    padding-bottom: 15px;
+  }
+  .banner{
+    margin-top: 20px;
+  }
+
+  .foo,
+  #msgg,
+  .butt {
+    display: inline-block;
+  }
+  .ftoo,
+  .fto,
+  .ft {
+    display: inline-block;
+
+    margin: 20px 20px;
+    padding-bottom: 4px;
+    padding-right: 80px;
+    vertical-align: top;
+  }
+  .ft {
+    opacity: 0.7;
+    width: 100%;
+    height: 30%;
+    margin: 0px;
+    padding-bottom: 0px;
+    padding-right: 0px;
+  }
+  #map {
+    width: 100%;
+  }
+  .o {
+    display: block;
+  }
+
+  .two {
+    display: block;
+  }
+  .butt {
+    text-align: justify;
+  }
+  .o .foo {
+    align-items: stretch;
+  }
+  .o .ftoo .fto {
+    align-items: stretch;
+  }
+
+  .ftoo h1{
+    font-size: 2em;
+  }
+  strong{
+    color: #0b0a0a;
+    text-decoration: none;
+  }
+
+}
+
+/* styles for screens above 769px */
+@media only screen and (min-width: 769px) {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 17px;
+  }
+  body {
+    font-family: "Oswald", sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  .navbar{
+    margin:auto;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar ul {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    top: 0;
+    width: auto;
+    background-color: transparent;
+    padding-bottom: 0;
+}
+
+.navbar ul.show {
+    display: flex;
+}
+
+.navbar ul li{
+    list-style: none;
+    display: inline-block;
+    margin: 0 20px; 
+    position: relative;  
+    white-space: nowrap;
+}
+
+.navbar ul li a{
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+    font-size: 100%;
+}
+
+.navbar ul li::after{
+    content: '';
+    height: 3px;
+    width: 0%;
+    background: red;
+    position:absolute;
+    left: 0;
+    bottom: -10px;
+    transition: 0.5s;
+}
+
+.navbar ul li:hover::after{
+    width: 100%;
+}
+
+.menu-btn {
+    display: none;
+}
+
+.hidden-checkbox {
+    display: none; /* Hide the checkbox visually */
+  }
+
+#menuToggle:checked + .menu-btn + ul {
+    display: none;
+}
+
+  main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-top: 80px;
+  }
+
+  .container{
+    display: flex;
+    margin-top: -25px;
+
+  }
+
+  aside {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    background-color: red;
+    margin-top: 10px;
+    width: 20%;
+    position:sticky;
+    left: 0;
+    box-shadow: 2px 2px 3px #959796;
+    border-radius: 7px;
+    box-sizing: border-box;
+    height: 40em; 
+    margin-right: 1.5em;
+  }
+
+  aside div{
+    width: 90%;
+    font-size: 16px;
+    height: 2.5em;
+    margin-bottom: 20px;
+  }
+
+  aside div:hover {
+    background-color: #1e1d1d;
+    color: #f4f4f4;
+  }
+
+  aside h2 {
+    margin-bottom: 30px;
+    text-align: center;
+    display: block; 
+  }
+
+  .product-grid {
+    margin-left: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    flex: 1;
+    justify-content: space-between;
+    transition: transform 0.2s ease-in-out;
+    gap: 15px;
+    margin-top: 0;
+  }
+
+  .product {
+    background-color: #f4f4f4;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    height: auto;
+    width: 23%;
+    padding-bottom: 15px;
+  }
+
+  .banner{
+    margin-top: 10px;
+  }
+
+  .banner img{
+    height: 450px;
+    width: 1280px;
+  }
+
+  .foo,
+  #msgg,
+  .butt {
+    display: inline-block;
+  }
+  .ftoo,
+  .fto,
+  .ft {
+    display: inline-block;
+
+    margin: 20px 20px;
+    padding-bottom: 4px;
+    padding-right: 80px;
+    vertical-align: top;
+  }
+  .ft {
+    opacity: 0.7;
+    width: 100%;
+    height: 30%;
+    margin: 0px;
+    padding-bottom: 0px;
+    padding-right: 0px;
+  }
+  #map {
+    width: 100%;
+  }
+  .o {
+    display: block;
+  }
+
+  .two {
+    display: block;
+  }
+  .butt {
+    text-align: justify;
+  }
+  .ftoo h1{
+    font-size: 2em;
+  }
+  strong{
+    color: #0b0a0a;
+    text-decoration: none;
+  }
+  .order{
+    margin: 16px 0;
+      height: 1px;
+      background: #ececec;
+      width: 900px;
+  }
+  
+}
+    
+    </style>
+  </head>
+	<body>
+		<head>
+			
+		</head>
+		<!--Navigation bar-->
+	 <nav>
+         <div class="banner_head">
+            <div class="navbar">
+                <!-- Logo and Navigation Links -->
+                <a href="index.html" id="logo"> 
+                    <span class="brand-name">Royal Car Rentals</span> 
+                    
+                </a>
+                <input type="checkbox" id="menuToggle" class="hidden-checkbox">
+                <label class="menu-btn" for="menuToggle">&#9776;</label>
+                
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/cars">Cars</a></li>
+                    <li><a href="/home">Purchase</a></li>
+                    <li><a href="./html/about.html">About</a></li>
+                    <li><a href="./html/contact.html">Contact </a></li>
+                </ul>                                                                                                                                      
+            </div>
+        </div>  
+    </nav>
+    <banner>
+      <div>
+          <div class="intro">
+            <h1>Booking</h1>
+            </div>
+          </div>
+    </banner>
+    <main>
+		
+	<div class="booking">
+    
+    <form id="car-rental-form" method="POST" action="/data">
+      <h1 id="title">Personal Information</h1>
+    <div class="split left">
+      <div class="rowTab">
+        <div class="rightTab">
+          <input autofocus type="text" name="firstname" id="firstname" class="form-control" placeholder="First name" required>
+        </div>
+      </div>
+      
+      <div class="rowTab">
+        <div class="rightTab">
+          <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Last name" required>
+        </div>
+      </div>
+
+      <div class="rowTab">
+        <div class="rightTab">
+          <input type="number" name="email" id="email" min="1900" max="2099" class="form-control" placeholder="Your Email" required>
+        </div>
+      </div>
+      
+      <div class="rowTab">
+        <div class="rightTab">
+          <input type="text" name="mobile" id="mobile" class="form-control" placeholder="Enter mobile number" required>
+        </div>
+      </div>
+      
+     
+     </div>
+
+      <div class="split right centered">
+      <h1 id="title">Booking Detail</h1>
+      <div class="rowTab">
+        <div class="rightTab">
+          <input autofocus type="text" name="Pickup" id="Pickup" class="form-control" placeholder="PickUp Location" required>
+        </div>
+      </div>
+      
+      <div class="rowTab">
+        <div class="rightTab">
+          <input type="text" name="dropLocation" id="dropLocation" class="form-control" placeholder="Drop Location" required>
+        </div>
+      </div>
+
+      <div class="rowTab">
+        <div class="rightTab">
+          <input type="datetime-local" name="pick" id="pick" class="form-control" title="Pickup Date" placeholder="" data-toggle="datetimepicker">
+        </div>
+      </div>
+      
+      <div class="rowTab">
+        <div class="rightTab">
+          <input type="datetime-local" name="mobile" id="mobile" class="form-control" title="Return Date" placeholder="Enter mobile number" required>
+          
+        </div>
+      </div>
+
+       	 
+      <div class="split right last">
+      	<h1 id="title" style="padding-bottom: 10px;">Payment</h1>
+      	<div class="rowTab">
+      	
+		<label class="container">GooglePay
+		  <input type="radio" checked="checked" name="radio">
+		  <span class="checkmark"></span>
+		</label>
+		<label class="container">PayPal
+		  <input type="radio" name="radio">
+		  <span class="checkmark"></span>
+		</label>
+		<label class="container">Bank Transfer
+		  <input type="radio" name="radio">
+		  <span class="checkmark"></span>
+		</label>
+         <button id="submit" type="submit">Book Now</button>
+      </div>
+     
+      </div>
+     
+     </div>
+    
+  </form>
+</div>
+		</main>
+		<footer>
+			
+		</footer>
+	</body>
+</html>

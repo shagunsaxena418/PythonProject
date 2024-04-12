@@ -64,7 +64,7 @@
           <article>Type: {{ car.Type }}</article>
           <article>Fuel: {{ car.Fuel }}</article>
           <article>Transmission: {{ car.Transmission }}</article>
-          <button data-name={{ car.Brand }} data-price={{ car.Price }}class="addcart">{{ car.Price }}</button>
+          <button data-name={{ car.Brand }} data-price={{ car.Price }}class="addcart" OnClick="redirectToBookings()">{{ car.Price }}</button>
         </div>
   
         {% endfor %}
@@ -114,6 +114,15 @@
           </div>
     </footer>
   </body>
+  <script>
+    
+    function redirectToBookings() {
+        // Constructing the URL with query parameters
+        var url = '/booking';
+        // Redirecting to the bookings page
+        window.location.href = url;
+    }
+    </script>
   <style type="text/css">
     @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap');
 

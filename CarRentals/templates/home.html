@@ -5,6 +5,16 @@
 
     <title>Royal Car Rentals</title>
   </head>
+
+  <script>
+    /*$( document ).ready(function() {*/
+      document.getElementById("car-rental-form").addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+        
+      });
+    /*});*/
+  </script>
+
   <style type="text/css">
        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap');
     form{
@@ -83,7 +93,55 @@
   cursor: pointer;
   box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.4)
 }
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
 
+.popup {
+  margin: 80px 530px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+  position: relative;
+  transition: all 5s ease-in-out;
+  border: 12px solid yellowgreen;
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .close:hover {
+  color: #06D85F;
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+}
 .products button{
   background-color: #2B2E4A;
 }
@@ -941,6 +999,7 @@ body {
                     <li><a href="/">Home</a></li>
                     <li><a href="/cars">Cars</a></li>
                     <li><a href="/home">Purchase</a></li>
+                    <li><a href="/booking">Booking</a></li>
                     <li><a href="./html/about.html">About</a></li>
                     <li><a href="./html/contact.html">Contact </a></li>
                 </ul>                                                                                                                                                                                                                                                                                                                                                                                                  
@@ -1033,17 +1092,24 @@ body {
         </div>
       </div>
 
-    <button id="submit" type="submit">Submit</button>
+    <button id="submit" type="submit" id="Register">Submit</button>
     <button id="reset" type="reset">Reset</button>
   </form>
+  <h1>{{ message }}</h1>
 </div>
 
     </main>
   </body>
 
 </html>
-
-
-
-
+<div id="popup1" class="overlay">
+  <div class="popup">
+    <h2>Royal Rental Cars</h2>
+    <br>
+    <a class="close" href="./reward.html">&times;</a>
+    <div class="content" id="earn_points">
+      
+    </div>
+  </div>
+</div>
 

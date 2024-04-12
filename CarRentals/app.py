@@ -3,6 +3,7 @@ import random
 from flask import Flask, jsonify, request, render_template
 from pymongo import MongoClient
 
+
 # define the mongodb client
 client = MongoClient(port=27017)
 # define the database to use
@@ -12,7 +13,7 @@ collection = db['carRentalData']
 # define the flask app
 app = Flask(__name__)
 
-
+value=0
 # define the home page route
 @app.route('/')
 def Home():
@@ -40,7 +41,11 @@ def Cars():
 # define the registration page route
 @app.route('/home')
 def Registration():
-    return render_template("home.html")
+    if value==0:
+        suc=""
+    else:
+        suc="data inserted"
+    return render_template("home.html",message=suc)
 
 # define the registration page route
 @app.route('/booking')
@@ -61,7 +66,7 @@ def data():
         data['Transmission'] = request.form['transmission']
         data['Price'] = request.form['price']
         db.carRentalData.insert_one(data)
-
+        value=1
     return render_template("home.html")
 
 @app.route('/cars_data', methods=["GET"])
@@ -87,17 +92,23 @@ def generate_reference_number():
         reference_number += str(random.randint(0, 9))
     return reference_number
 
-@app.route('/bookings', methods=["GET","POST"])
+@app.route('/book', methods=["GET","POST"])
 def booking_dat():
     data = {}
     if request.method == "POST":
-        data['reference_number'] = generate_reference_number()
-        data['firstName'] = request.form['firstName']
-        data['lastName'] = request.form['lastName']
-        data['mobileNumber'] = request.form['mobileNumber']
-        data['pickupLocation'] = request.form['pickupLocation']
+               
+        data['reference_number'] =  generate_reference_number()
+        data['firstName'] = request.form['firstname']
+        data['lastName'] = request.form['lastname']
+        data['email'] = request.form['email']
+        data['mobileNumber'] = request.form['mobile']
+        data['pickupLocation'] = request.form['Pickup']
         data['dropLocation'] = request.form['dropLocation']
+        data['pickupDate']=request.form['pickupdate']
+        data['dropOffDate']=request.form['returndate']
         db.bookings.insert_one(data)
+        return "good "
+        return render_template("home.html")
 
 if __name__ == '__main__':
     app.run(debug=False)

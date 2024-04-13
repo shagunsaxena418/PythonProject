@@ -6,14 +6,10 @@
     <title>Royal Car Rentals</title>
   </head>
 
-  <script>
-    /*$( document ).ready(function() {*/
-      document.getElementById("car-rental-form").addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent form submission
-        
-      });
-    /*});*/
-  </script>
+  
+
+ 
+  
 
   <style type="text/css">
        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap');
@@ -1091,25 +1087,53 @@ body {
           <input type="number" name="price" id="price" min="0" class="form-control" placeholder="Enter rental price per day" required>
         </div>
       </div>
+      <div id="message"></div>
 
     <button id="submit" type="submit" id="Register">Submit</button>
     <button id="reset" type="reset">Reset</button>
   </form>
-  <h1>{{ message }}</h1>
 </div>
 
     </main>
+    <script>
+      // Wait for the DOM content to be fully loaded
+      document.addEventListener("DOMContentLoaded", function() {
+          // Attach event listener to the form
+          document.getElementById("car-rental-form").addEventListener('submit', function(event) {
+              event.preventDefault(); // Prevent form submission
+              saveFormData(); // Call the function to save form data
+          });
+      });
+  
+      function saveFormData() {
+          // Get form data
+          var formData = new FormData(document.getElementById("car-rental-form"));
+          
+          // Send AJAX request to server-side Python script to save the form data
+          var xhr = new XMLHttpRequest();
+          xhr.open("POST", "/save-data", true); // Adjust URL to your server-side Python script
+          xhr.onreadystatechange = function() {
+              if (xhr.readyState === 4) {
+                  if (xhr.status === 200) {
+                      // If data saved successfully, display success message and redirect
+                      document.getElementById("message").innerText = "Booking is successful!";
+                      setTimeout(function() {
+                          window.location.href = "/home";
+                      }, 3000);
+                  } else {
+                      // If there was an error, display an error message
+                      document.getElementById("message").innerText = "Error saving data. Please try again later.";
+                  }
+              }
+          };
+          xhr.send(formData);
+      }
+  </script>
+  
+  
   </body>
 
+
 </html>
-<div id="popup1" class="overlay">
-  <div class="popup">
-    <h2>Royal Rental Cars</h2>
-    <br>
-    <a class="close" href="./reward.html">&times;</a>
-    <div class="content" id="earn_points">
-      
-    </div>
-  </div>
-</div>
+
 

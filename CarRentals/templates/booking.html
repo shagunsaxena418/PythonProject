@@ -1080,14 +1080,53 @@ body {
 
          
       </div>
+      <div id="message"> 
+      </div>
       <button id="submit" type="submit" >Book Now</button>
       </div>
 
     
   </form>
+  
 </div>
 
     </main>
+    <script>
+      // Wait for the DOM content to be fully loaded
+      document.addEventListener("DOMContentLoaded", function() {
+          // Attach event listener to the form
+          document.getElementById("car-rental-form").addEventListener('submit', function(event) {
+              event.preventDefault(); // Prevent form submission
+              saveFormData(); // Call the function to save form data
+          });
+      });
+  
+      function saveFormData() {
+          // Get form data
+          var formData = new FormData(document.getElementById("car-rental-form"));
+          
+          // Send AJAX request to server-side Python script to save the form data
+          var xhr = new XMLHttpRequest();
+          xhr.open("POST", "/save-booking-data", true); // Adjust URL to your server-side Python script
+          xhr.onreadystatechange = function() {
+              if (xhr.readyState === 4) {
+                  if (xhr.status === 200) {
+                      // If data saved successfully, display success message and redirect
+                      document.getElementById("message").innerText = "Booking is successful!";
+                      setTimeout(function() {
+                          window.location.href = "/booking";
+                      }, 2000);
+                  } else {
+                      // If there was an error, display an error message
+                      document.getElementById("message").innerText = "Error saving data. Please try again later.";
+                  }
+              }
+          };
+          xhr.send(formData);
+      }
+  </script>
+  
+  
   </body>
   
 

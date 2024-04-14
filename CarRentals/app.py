@@ -135,6 +135,34 @@ def save_data():
     except Exception as e:
         # If an error occurred during data saving, return an error response
         return jsonify({"success": False, "error": str(e)}), 500
+    
+@app.route('/save-booking-data', methods=['POST'])
+def save_booking_data():
+    try:
+        # Retrieve form data from the request
+        data = request.form.to_dict()
+
+        # Here you can process and save the form data as needed
+        if request.method == "POST":
+            
+            data['reference_number'] =  generate_reference_number()
+            data['firstName'] = request.form['firstname']
+            data['lastName'] = request.form['lastname']
+            data['email'] = request.form['email']
+            data['mobileNumber'] = request.form['mobile']
+            data['pickupLocation'] = request.form['Pickup']
+            data['dropLocation'] = request.form['dropLocation']
+            data['pickupDate']=request.form['pickupdate']
+            data['dropOffDate']=request.form['returndate']
+            db.bookings.insert_one(data)
+            value=1
+        
+
+        # Assuming the data was successfully saved, return a success response
+        return jsonify({"success": True}), 200
+    except Exception as e:
+        # If an error occurred during data saving, return an error response
+        return jsonify({"success": False, "error": str(e)}), 500
 
 if __name__ == '__main__':
     app.run(debug=False)

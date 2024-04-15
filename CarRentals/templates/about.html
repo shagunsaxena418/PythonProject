@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!--head section-->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Royal Cars</title>
+    <link rel="stylesheet" href="./about.css" />
+    
+  </head>
+  <style type="text/css">
+     @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap');
+* {
+  margin: 0%;
+}
+
+.ft {
+  display: none;
+}
+.two {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.foo {
+  background-color: black;
+  height: 50px;
+  width: 200px;
+  border: 3px solid cadetblue;
+  text-align: center;
+  padding-top: 12px;
+  transform-origin: right bottom;
+  transform: skewY(10deg);
+}
+.o {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.add-img {
+  align-items: center;
+}
+#msgg {
+  text-align: center;
+}
+.ftoo,
+.fto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0%;
+  text-align: center;
+}
+
+.message,
+.img {
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  max-height: 200px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+
+  /* from desk */
+  vertical-align: top;
+  font-size: 16px;
+  box-sizing: border-box; /* Include padding and border in height */
+  overflow: hidden; /* Hide overflow content */
+}
+.para {
+  margin-top: 0%;
+}
+.two {
+  display: none;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: whitesmoke;
+}
+li,
+a,
+button,
+.logo {
+  font-family: "Oswald", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: black;
+
+  text-decoration: none;
+}
+.logo {
+  font-weight: 800;
+  color: rgba(255, 0, 0, 1);
+  font-size: 30px;
+}
+.logo:hover {
+  color: rgba(255, 0, 0, 0.7);
+}
+header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 30px 10%;
+}
+.logo {
+  cursor: pointer;
+  margin-right: auto;
+}
+.nav_links {
+  list-style: none;
+}
+.nav_links li {
+  display: inline-block;
+  padding: 0px 20px;
+}
+.nav_links li a {
+  transition: all 0.3s ease 0s;
+}
+
+.nav_links li a:hover {
+  color: cadetblue;
+}
+
+button {
+  font-family: "Oswald", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  /* color: #edf0f1; */
+  color: white;
+  border: 9px solid rgb(60, 40, 25);
+  text-decoration: none;
+}
+button {
+  /* margin-left: 20px; */
+  padding: 9px 25px;
+  /* background-color: rgba(0, 136, 169, 1); */
+  background-color:black;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+button:hover {
+  /* background-color: rgba(0, 136, 169, 0.8); */
+  background-color: white;
+  color: black;
+}
+.nav {
+  /* Your navbar styles here */
+  width: 100%; /* Example width for the navbar */
+  background-color: rgb(232, 60, 60); /* Example background color for the navbar */
+  /* Other styles for your navbar */
+}
+
+.banner-container {
+  font-size: 0; /* Removing inline-block's white space */
+  max-width: 100%; /* Set maximum width */
+}
+
+.image {
+  width: 100%;
+  height: 100%; /* Ensure image takes the full height of its container */
+  object-fit: fill; /* Fit the entire image within the container, cropping if necessary */
+}
+.para {
+  font-family: "Oswald", sans-serif;
+  /* margin-top: 150px; */
+  font-size: 35px;
+  font-weight: 700;
+}
+.para-one {
+  font-family: "Oswald", sans-serif;
+  font-size: 20px;
+}
+.message {
+  background-color: cadetblue;/* Just for visibility */
+}
+.below {
+  margin: 20px 60px;
+  font-family: "Oswald", sans-serif;
+}
+.head {
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+}
+.para1 {
+  font-size: 15px;
+  color: #565656;
+}
+.but {
+  margin-left: 20px;
+  padding: 9px 25px;
+  background-color: cadetblue;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  color: white;
+}
+.but:hover{
+  background-color: #57f959;
+}
+.custom-hr {
+  background-color: blue; /* Set color */
+}
+
+.footer {
+  background-color: cadetblue;
+}
+
+.one,
+.two {
+  text-align: justify;
+  /* height: 200px; */
+  font-family: "Oswald", sans-serif;
+  font-size: 20px;
+  padding: 15px 15px;
+}
+.one,
+.two {
+  text-align: center;
+}
+
+.foo {
+  background-color: black;
+  height: 50px;
+  width: 200px;
+  border: 3px solid cadetblue;
+  text-align: center;
+  padding-top: 12px;
+  transform-origin: right bottom;
+  transform: skewY(10deg);
+}
+
+.foo,
+#msgg {
+  margin: 30px 30px;
+  color: white;
+  /* margin-top: 60px;
+  margin-bottom: 60px; */
+}
+
+#msgg {
+  color: black;
+  font-weight: bolder;
+  font-size: 30px;
+}
+
+.butt {
+  background-color: cadetblue;
+  border: none;
+  border-radius: 70px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  color: white;
+  /* margin-left: 100px; */
+}
+.ftoo,
+.fto {
+  vertical-align: top;
+}
+li {
+  list-style-type: none;
+  margin-top: 3px;
+  padding-top: 5px;
+}
+#ttt {
+  text-align: center;
+  padding-bottom: 8px;
+  padding-top: 8px;
+  color: black;
+  opacity: 1;
+}
+.three {
+  /* vertical-align: top; */
+  background-color: rgba(93, 97, 50, 0.4);
+}
+
+.para1 {
+  text-align: justify;
+}
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Oswald",sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+}
+/* Styling for the fixed navigation bar at the top of the page */
+.banner_head {
+    width: 100%;
+    background-color: black;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+#logo {
+  color: ghostwhite;
+  font-size: 140%; /* Adjust the font size as needed */
+  text-decoration: none;
+  display: inline-block;
+  /* Add some padding for better visibility */
+}
+
+.brand-name {
+  font-style: italic; /* Italicize the brand name */
+  vertical-align: middle; /* Align the text vertically with the cart symbol */
+  font-size: 120%;
+  font-weight: 700;
+}
+
+#logo :hover {
+  color:#00ff00;
+}
+
+.navbar {
+  margin: auto;
+  padding: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar ul li {
+  list-style: none;
+  display: inline-block;
+  margin: 20px;
+  position: relative;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: white;
+  text-transform: uppercase;
+  font-size: 70%;
+}
+
+.navbar ul {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 100%; /* Adjust as needed */
+  left: 0;
+  width: 100%;
+  background-color: black;
+  z-index: 1000;
+}
+
+.heahd {
+  display: none;
+}
+
+.navbar ul.show {
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar ul li {
+  width: 100%;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.menu-btn {
+  display: block;
+  color: white;
+  cursor: pointer;
+}
+
+.hidden-checkbox {
+  display: none; /* Hide the checkbox visually */
+}
+
+#menuToggle:checked + .menu-btn + ul {
+  display: flex;
+}
+
+.navbar ul li::after {
+  content: "";
+  height: 3px;
+  width: 0%;
+  background: cadetblue;
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  transition: 0.5s;
+}
+
+.navbar ul li a:hover::after,
+.navbar ul li a:focus::after {
+  width: 100%;
+}
+
+
+
+/* media query for tablet view */
+@media only screen and (min-width: 481px) {
+  .message,
+  .img {
+    display: inline-block;
+    height: 400px; /* Set initial height */
+    max-height: 400px; /* Set maximum height */
+  }
+
+  .img {
+    width: 65%;
+    background-color: cadetblue; /* Just for visibility */
+  }
+  .para {
+    /* font-family: "Montserrat", sans-serif; */
+    margin-top: 150px;
+    /* font-size: 35px;
+    font-weight: 700; */
+  }
+  .message {
+    width: 35%;
+    background-color: cadetblue; /* Just for visibility */
+    text-align: center;
+    vertical-align: middle;
+  }
+  .foo,
+  #msgg,
+  .butt {
+    display: inline-block;
+  }
+  .ftoo,
+  .fto,
+  .ft {
+    display: inline-block;
+
+    margin: 20px 20px;
+    padding-bottom: 4px;
+    padding-right: 80px;
+    vertical-align: top;
+  }
+  .ft {
+    opacity: 0.7;
+    width: 100%;
+    height: 30%;
+    margin: 0px;
+    padding-bottom: 0px;
+    padding-right: 0px;
+  }
+  #map {
+    width: 100%;
+  }
+  .o {
+    display: block;
+  }
+
+  .two {
+    display: block;
+  }
+  .butt {
+    text-align: justify;
+  }
+  .o .foo {
+    align-items: stretch;
+  }
+  .o .ftoo .fto {
+    align-items: stretch;
+  }
+}
+
+/* media query for laptop view */
+@media only screen and (min-width: 768px) {
+  .message,
+  .img {
+    display: inline-block;
+    /* vertical-align: top; Align elements at the top */
+    /* font-size: 16px; Reset font size for content */
+    height: 400px; /* Set initial height */
+    max-height: 400px; /* Set maximum height */
+    /* box-sizing: border-box; /* Include padding and border in height */
+    /* overflow: hidden; Hide overflow content */
+  }
+
+  .img {
+    width: 65%;
+    background-color: cadetblue; /* Just for visibility */
+  }
+  .para {
+    /* font-family: "Montserrat", sans-serif; */
+    margin-top: 150px;
+    /* font-size: 35px;
+    font-weight: 700; */
+  }
+  .message {
+    width: 35%;
+    background-color: cadetblue; /* Just for visibility */
+    text-align: center;
+    vertical-align: middle;
+  }
+  .foo,
+  #msgg,
+  .butt {
+    display: inline-block;
+  }
+  .ftoo,
+  .fto,
+  .ft {
+    display: inline-block;
+
+    margin: 20px 20px;
+    padding-bottom: 4px;
+    padding-right: 80px;
+    vertical-align: top;
+  }
+  .ft {
+    opacity: 0.7;
+    width: 100%;
+    height: 30%;
+    margin: 0px;
+    padding-bottom: 0px;
+    padding-right: 0px;
+  }
+  #map {
+    width: 100%;
+  }
+  .o {
+    display: block;
+  }
+
+  .two {
+    display: block;
+  }
+  .butt {
+    text-align: justify;
+  }
+
+  .navbar {
+    margin: auto;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .navbar ul {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    top: 0;
+    width: auto;
+    background-color: transparent;
+    padding-bottom: 0;
+  }
+
+  .navbar ul.show {
+    display: flex;
+  }
+
+  .navbar ul li {
+    list-style: none;
+    display: inline-block;
+    margin: 0 20px;
+    position: relative;
+    white-space: nowrap;
+  }
+
+  .navbar ul li a {
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+    font-size: 100%;
+    font-weight: 600;
+}
+
+  .navbar ul li::after {
+    content: "";
+    height: 3px;
+    width: 0%;
+    background: cadetblue;
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    transition: 0.5s;
+  }
+
+  .navbar ul li:hover::after {
+    width: 100%;
+  }
+
+  .menu-btn {
+    display: none;
+  }
+
+  .hidden-checkbox {
+    display: none; /* Hide the checkbox visually */
+  }
+
+  #menuToggle:checked + .menu-btn + ul {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 630px) and (max-width: 820px) {
+  #msgg {
+    transform-origin: right bottom;
+    transform: skewY(10deg);
+  }
+}
+
+  </style>
+  <body>
+    <header></header>
+     <nav>
+         <div class="banner_head">
+            <div class="navbar">
+                <!-- Logo and Navigation Links -->
+                <a href="index.html" id="logo"> 
+                    <span class="brand-name">Royal Car Rentals</span> 
+                    
+                </a>
+                <input type="checkbox" id="menuToggle" class="hidden-checkbox">
+                <label class="menu-btn" for="menuToggle">&#9776;</label>
+                
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/cars">Cars</a></li>
+                    <li><a href="/home">Purchase</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/login">Log out</a><li>
+                </ul>                                                                                                                                                                                                                                                                                                                                                                                                  
+            </div>
+        </div>  
+    </nav>
+
+    <main>
+      <section class="banner">
+        <div class="banner-container">
+          <div class="message">
+            <p class="para">ABOUT US</p>
+            <br />
+            <p class="para-one">Happy to see you</p>
+          </div>
+          <div class="img">
+            <img
+              class="image"
+              src="https://cdn.pixabay.com/photo/2023/07/25/20/26/people-8149872_1280.jpg"
+              alt="Staff"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!--section for about Royal Cars-->
+      <section>
+        <br />
+        <br />
+        <div class="below">
+          <div class="info aa">
+            <h1 class="head" id="about">ABOUT Royal Cars</h1>
+            <br />
+            <p class="para1">
+               We're dedicated to offering the most affordable car rental rates. Our mission is to ensure you can travel comfortably without breaking your budget. We're constantly striving to provide quality transportation options that fit within your financial means, so you can enjoy your journey worry-free.
+            </p>
+            <br />
+            <p class="para1">
+              Launched in 2001, Royal Car Rentals is dedicated to delivering the ultimate affordable car rental experience, ensuring top-quality vehicles at the best prices. Our locations are designed to be bright, easy to navigate, and staffed by friendly professionals.
+            </p>
+            <br />
+            <br />
+            <hr class="custom-hr" />
+          </div>
+          <br />
+
+          <div class="info cc">
+            <h1 class="head" id="join">JOIN OUR TEAM</h1>
+            <br />
+            <p class="para1">
+              Looking for an exciting fulfilling place to work? You've come to
+              the right place!
+            </p>
+            <br />
+            <p class="para1">
+              At Royal Cars, we're passionate about teaming up with ambitious individuals who share our love for cars. Whether you're starting out or seeking a fresh opportunity, we have a career path tailored to you. Our dedication to providing high-quality vehicles at competitive rates, along with exceptional customer service, makes Royal Cars an excellent workplace. Discover how you can join our team and find the perfect role for you!
+            </p>
+            <br />
+            <br />
+            <hr class="custom-hr" />
+          </div>
+          <br />
+         
+         
+        </div>
+      </section>
+    </main>
+    <br />
+<!--Footer area-->
+    <footer>
+      <div class="footer">
+        <br />
+
+        <div class="footer one o">
+          <div class="foo"><p class="f1">BEST DEAL</p></div>
+          <div class="foo"><p class="f1">TOP VALUE</p></div>
+          <div class="foo"><p class="f1">BUDGET PICK READY</p></div>
+          <div class="foo"><p class="f1">IN STOCK</p></div>
+          <div id="msgg">
+            <p>ECONOMIC</p>
+            <p>CAR RENTALS</p>
+          </div>
+          <br />
+        </div>
+        <hr />
+          <div class="ft">
+            <iframe
+              id="map"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2880.981171725076!2d-79.33868912381685!3d43.77324967109664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d4d3bca1a3f78f%3A0x815365ed6c3b957e!2sLambton%20College%20In%20Toronto!5e0!3m2!1sen!2sca!4v1700614584508!5m2!1sen!2sca"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+        <div class="footer three tt">
+          <p id="ttt">&copy; Royal Cars Inc 2024</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

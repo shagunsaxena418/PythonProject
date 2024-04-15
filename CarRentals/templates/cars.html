@@ -30,9 +30,8 @@
                     <li><a href="/">Home</a></li>
                     <li><a href="/cars">Cars</a></li>
                     <li><a href="/home">Purchase</a></li>
-                    <li><a href="/booking">Booking</a></li>
-                    <li><a href="./html/about.html">About</a></li>
-                    <li><a href="./html/contact.html">Contact </a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/login">Log out</a><li>
                 </ul>                                                                                                                                                                                                                                                                                                                                                                                                  
             </div>
         </div>  
@@ -56,15 +55,18 @@
         {% for car in cars %}
         <div class="product"  id="fruits">
           <img src="https://cdn.pixabay.com/photo/2020/06/06/18/28/lexus-nx-5267710_1280.jpg" alt="Strawberry Image"/>
-          <h4>{{ car.Brand }}</h4>
-          <p class="price">${{ car.Price }}</p>
-          <article>Model: {{ car.Model }}</article>
-          <article>Year: {{ car.Year }}</article>
-          <article>Color: {{ car.Color }}</article>
-          <article>Type: {{ car.Type }}</article>
-          <article>Fuel: {{ car.Fuel }}</article>
-          <article>Transmission: {{ car.Transmission }}</article>
-          <button data-name={{ car.Brand }} data-price={{ car.Price }}class="addcart">{{ car.Price }}</button>
+          <h4 id="Brand" class="Brand">{{ car.Brand }}</h4>
+          <p class="price">{{ car.Model }}</p>
+          <div class="hide">
+          <article class="Price">{{ car.Price }}</article>
+          <article class="Model">{{ car.Model }}</article>
+          <article class="Year">{{ car.Year }}</article>
+          <article class="Color">{{ car.Color }}</article>
+          <article class="Type">{{ car.Type }}</article>
+          <article class="Fuel">{{ car.Fuel }}</article>
+          <article class="Transmission">{{ car.Transmission }}</article>
+          </div>
+          <button class="addcart" OnClick="redirectToBookings(this)">$ {{ car.Price }}/day</button>
         </div>
   
         {% endfor %}
@@ -76,46 +78,73 @@
       
     </main>
 
-    <!--Footer area-->
-    <footer>
-        <div class="footer">
-             <!-- Footer Content -->
-            
-            <hr />
     
-            <div class="footer two t">
-              <br />
-              <div class="ftoo">
-                <h1>RoyalCars</h1>
-              </div>
-              <div class="fto">
-                <ul>
-                    <p>
-                      <a href="about.html#about"><strong>About RoyalCars</strong></a>
-                    </p>
-                    <li><a href="./html/about.html#card">Gift Cards</a></li>
-                    <li><a href="./html/about.html#join">Join Our Team</a></li>
-                    <li><a href="./html/about.html#lower">Lower Food Prices</a></li>
-                    <li><a href="./html/about.html#question">Have a Question?</a></li>
-                  </ul>
-              </div>
-              <!-- Store Location -->
-              <div class="fto">
-                <ul>
-                  <p><strong>Our Store</strong></p>
-                  <li>Toronto</li>
-                </ul>
-              </div>
-            
-            <!-- Copyright Information -->
-            <div class="footer three tt">
-              <p id="ttt">&copy;RoyalCars All Rights Reserved.<br>Designed by Pysharks</p>
-            </div>
+   <!--Footer area-->
+    <footer>
+      <div class="footer">
+        <br />
+
+        <div class="footer one o">
+          <div class="foo"><p class="f1">BEST DEAL</p></div>
+          <div class="foo"><p class="f1">TOP VALUE</p></div>
+          <div class="foo"><p class="f1">BUDGET PICK READY</p></div>
+          <div class="foo"><p class="f1">IN STOCK</p></div>
+          <div id="msgg">
+            <p>ECONOMIC</p>
+            <p>CAR RENTALS</p>
           </div>
+          <br />
+        </div>
+        <hr />
+          <div class="ft">
+            <iframe
+              id="map"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2880.981171725076!2d-79.33868912381685!3d43.77324967109664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d4d3bca1a3f78f%3A0x815365ed6c3b957e!2sLambton%20College%20In%20Toronto!5e0!3m2!1sen!2sca!4v1700614584508!5m2!1sen!2sca"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+        <div class="footer three tt">
+          <p id="ttt">&copy; Royal Cars Inc 2024</p>
+        </div>
+      </div>
     </footer>
   </body>
+</html>
+<script type="text/javascript">
+    
+    function redirectToBookings(button) {
+      var cardiv= button.parentElement;
+
+      // Product object
+      var detail = {
+          Brand: cardiv.querySelector(".Brand").innerText,
+          Price: cardiv.querySelector(".Price").innerText,
+          Model:cardiv.querySelector(".Model").innerText,
+          Year:cardiv.querySelector(".Year").innerText,
+          Color:cardiv.querySelector(".Color").innerText,
+          Type:cardiv.querySelector(".Type").innerText,
+          Fuel:cardiv.querySelector(".Fuel").innerText,
+          Transmission:cardiv.querySelector(".Transmission").innerText
+      };
+
+      // Convert the product object to a JSON string
+      var detailString = JSON.stringify(detail);
+
+      // Store the JSON string in localStorage
+      localStorage.setItem('car-detail', detailString);
+
+        // Constructing the URL with query parameters
+        var url = '/booking';
+        // Redirecting to the bookings page
+        window.location.href = url;
+    }
+    </script>
   <style type="text/css">
-    @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap');
 
 * {
   margin: 0;
@@ -140,7 +169,11 @@ body {
   top: 0;
   z-index: 1000;
 }
+.hide{
+  display: none;
+  }
   /* CSS for main section */
+
 .intro {
   display: flex;
   flex-direction: column;
@@ -251,7 +284,7 @@ article{
   float: right;
   padding: 6px;
   margin-top: 4px;
-  background: red;
+  background: whitesmoke;
   font-size: 17px;
   border: none;
   cursor: pointer;
@@ -350,7 +383,7 @@ article{
   content: '';
   height: 3px;
   width: 0%;
-  background: red;
+  background: whitesmoke;
   position:absolute;
   left: 0;
   bottom: -10px;
@@ -433,7 +466,7 @@ aside h2 {
 main .find{
     text-align: center;
     font-size: 200%;
-    padding: 4%;
+    padding: 1%;
     color:  #2B2E4A;
     width: 95%;
 }
@@ -505,6 +538,7 @@ main .find{
 .container a{
   text-decoration: none;
   color: #0b0a0a;
+
 }
 
 .ft {
@@ -520,7 +554,7 @@ main .find{
   background-color: black;
   height: 50px;
   width: 200px;
-  border: 3px solid red;
+  border: 3px solid cadetblue;
   text-align: center;
   padding-top: 12px;
   transform-origin: right bottom;
@@ -597,7 +631,7 @@ button:hover {
   background-color: black;
   height: 50px;
   width: 200px;
-  border: 3px solid red;
+  border: 3px solid cadetblue;
   text-align: center;
   padding-top: 12px;
   transform-origin: right bottom;
@@ -617,7 +651,7 @@ button:hover {
   font-size: 30px;
 }
 .butt {
-  background-color: red;
+  background-color: cadetblue;
   border: none;
   border-radius: 70px;
   cursor: pointer;
@@ -677,6 +711,8 @@ order{
     display: flex;
     width: 100%;
     margin-top: -20px;
+     margin-left: 10%;
+  margin-right: 10%;
   }
 
   aside {
@@ -686,7 +722,7 @@ order{
     top: 60px;
     width: 28%;
     box-shadow: 2px 2px 3px #959796;
-    background-color: red;
+    background-color: cadetblue;
     height: auto;
     left: 0;
     margin-right: 1.5em;
@@ -835,7 +871,7 @@ order{
     content: '';
     height: 3px;
     width: 0%;
-    background: red;
+    background: cadetblue;
     position:absolute;
     left: 0;
     bottom: -10px;
@@ -871,14 +907,15 @@ order{
   .container{
     display: flex;
     margin-top: -25px;
-
+    margin-left: 10%;
+    margin-right: 10%;
   }
 
   aside {
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
-    background-color: red;
+    background-color: cadetblue;
     margin-top: 10px;
     width: 20%;
     position:sticky;
@@ -927,7 +964,7 @@ order{
     border-radius: 5px;
     text-align: center;
     height: auto;
-    width: 23%;
+    width: 32%;
     padding-bottom: 15px;
   }
 

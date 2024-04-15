@@ -9,15 +9,50 @@ client = MongoClient(port=27017)
 # define the database to use
 db = client.car_rental_data
 collection = db['carRentalData']
+usercollection=db['userRegistration']
 
 # define the flask app
 app = Flask(__name__)
 
-value=0
 # define the home page route
 @app.route('/')
 def Home():
     return render_template("index.html")
+
+# define the About page route
+@app.route('/about')
+def About():
+    return render_template("about.html")
+
+# define the register page route
+@app.route('/register')
+def Register():
+    return render_template("register.html")
+
+# define the login page route
+@app.route('/login')
+def Login():
+    return render_template("login.html")
+
+# define the user register route
+@app.route('/userregister', methods=["GET", "POST"])
+def UserRegistration():
+    data = {}
+    users = list(usercollection.find())
+    user_data = 1
+    #Check whether the username already exists
+    for user in users:
+        if(user["email"] ==request.form['email'] ):
+            user_data=0
+            break
+    
+    if(user_data==1):
+        if request.method == "POST":
+            data['email'] = request.form['email']
+            data['Passname'] = request.form['Passname']
+            data['Active']=1
+            db.userRegistration.insert_one(data)
+            return render_template("index.html")
 
 # define the home page route
 @app.route('/cars')
@@ -41,13 +76,9 @@ def Cars():
 # define the registration page route
 @app.route('/home')
 def Registration():
-    if value==0:
-        suc=""
-    else:
-        suc="data inserted"
-    return render_template("home.html",message=suc)
+    return render_template("home.html")
 
-# define the registration page route
+# define the Booking page route
 @app.route('/booking')
 def Bookings():
     return render_template("booking.html")
@@ -65,10 +96,11 @@ def data():
         data['Fuel'] = request.form['fuel']
         data['Transmission'] = request.form['transmission']
         data['Price'] = request.form['price']
+        data['Active']=1
         db.carRentalData.insert_one(data)
-        value=1
     return render_template("home.html")
 
+# define the car data get page route
 @app.route('/cars_data', methods=["GET"])
 def cars_data():
     cars = list(collection.find())
@@ -86,6 +118,7 @@ def cars_data():
         })
     return jsonify(car_data)
 
+#function to create random numbers
 def generate_reference_number():
     reference_number = ''
     for i in range(8):
@@ -96,7 +129,6 @@ def generate_reference_number():
 def booking_dat():
     data = {}
     if request.method == "POST":
-               
         data['reference_number'] =  generate_reference_number()
         data['firstName'] = request.form['firstname']
         data['lastName'] = request.form['lastname']
@@ -106,38 +138,22 @@ def booking_dat():
         data['dropLocation'] = request.form['dropLocation']
         data['pickupDate']=request.form['pickupdate']
         data['dropOffDate']=request.form['returndate']
+        data['Sold']=1
         db.bookings.insert_one(data)
-        return "good "
-        return render_template("home.html")
-    
-@app.route('/save-data', methods=['POST'])
-def save_data():
-    try:
-        # Retrieve form data from the request
-        data = request.form.to_dict()
+        return jsonify({"ref": data['reference_number']})
+        
 
-        # Here you can process and save the form data as needed
-        if request.method == "POST":
-            
-            data['Brand'] = request.form['brand']
-            data['Model'] = request.form['model']
-            data['Year'] = request.form['year']
-            data['Color'] = request.form['color']
-            data['Type'] = request.form['type']
-            data['Fuel'] = request.form['fuel']
-            data['Transmission'] = request.form['transmission']
-            data['Price'] = request.form['price']
-            db.carRentalData.insert_one(data)
-            value =1
+@app.route('/check_user_existence', methods=['GET','POST'])
+def verify_user_existence():
+    users = list(usercollection.find())
+    user_data = 0
+    for user in users:
+        if(user["email"] == request.form['email']):
+            user_data=1
+            break
+    if(user_data ==1):
+        return render_template("index.html")
 
-        # Assuming the data was successfully saved, return a success response
-        return jsonify({"success": True}), 200
-    except Exception as e:
-        # If an error occurred during data saving, return an error response
-        return jsonify({"success": False, "error": str(e)}), 500
 
 if __name__ == '__main__':
     app.run(debug=False)
-
-
-

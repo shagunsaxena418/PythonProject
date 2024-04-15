@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Royal Car Rentals</title> 
+	  <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="../img/bag.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/signup.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <style>
+    html, body {
+        display: flex;
+        justify-content: center;
+        height: 100%;
+        }
+        body, div, h1, #main_signup, input, p { 
+        padding: 0;
+        margin: 0;
+        outline: none;
+        font-family: Roboto, Arial, sans-serif,Calibri;
+        font-size: 16px;
+        color: #666;
+        }
+        h1 {
+        padding: 40px 0;
+        font-size: 32px;
+        font-weight: 500;
+        text-align: center;
+        }
+        article{
+            font-family: Roboto, Arial, sans-serif;
+            font-size: 19.5px;
+            color: #2B2E4A;
+            text-align: center;
+            margin-top: 5px;;
+        }
+       
+        p {
+        font-size: 12px;
+        }
+        hr {
+        color: #a9a9a9;
+        opacity: 0.3;
+        }
+        .main-block {
+        max-width: 450px; 
+        min-height: 500px; 
+        padding: 10px 0;
+        margin: auto;
+        border-radius: 5px; 
+        border: solid 1px #ccc;
+        box-shadow: 1px 2px 5px rgba(0,0,0,.31); 
+        background: #ebebeb; 
+        }
+        #main_signup {
+        margin: 0 30px;
+        }
+        .account-type, .gender {
+        margin: 15px 0;
+        }
+        input[type=radio] {
+        display: none;
+        }
+        label#icon {
+        margin: 0;
+        border-radius: 5px 0 0 5px;
+        }
+        label.radio {
+        position: relative;
+        display: inline-block;
+        padding-top: 4px;
+        margin-right: 20px;
+        text-indent: 30px;
+        overflow: visible;
+        cursor: pointer;
+        }
+        label.radio:before {
+        content: "";
+        position: absolute;
+        top: 2px;
+        left: 0;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: cadetblue;
+        }
+        label.radio:after {
+        content: "";
+        position: absolute;
+        width: 9px;
+        height: 4px;
+        top: 8px;
+        left: 4px;
+        border: 3px solid #fff;
+        border-top: none;
+        border-right: none;
+        transform: rotate(-45deg);
+        opacity: 0;
+        }
+        input[type=radio]:checked + label:after {
+        opacity: 1;
+        }
+        input[type=text], input[type=password] {
+        width: calc(100% - 57px);
+        height: 36px;
+        margin: 13px 0 0 -5px;
+        padding-left: 10px; 
+        border-radius: 0 5px 5px 0;
+        border: solid 1px #cbc9c9; 
+        box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+        background: #fff; 
+        }
+        input[id=RePassname],input[id=pass_name] {
+        margin-bottom: 15px;
+        }
+        .errorClass { border:  1px solid cadetblue; }
+        #icon {
+        display: inline-block;
+        padding: 9.3px 15px;
+        box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+        background: cadetblue;
+        color: #fff;
+        text-align: center;
+        }
+        .btn-block {
+        margin-top: 10px;
+        text-align: center;
+        }
+        button {
+        width: 100%;
+        padding: 10px 0;
+        margin: 10px auto;
+        border-radius: 5px; 
+        border: none;
+        background: cadetblue;
+        font-size: 14px;
+        font-weight: 600;
+        color: #fff;
+        }
+        button:hover {
+        background: black;
+        }
+        button[type=signup] {
+            width: 100%;
+            padding: 10px 0;
+            margin: 10px auto;
+            border-radius: 5px; 
+            border: none;
+            background: black;
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;
+            }
+        button[type=signup]:hover {
+            background: cadetblue;
+            color: black;
+        }
+        
+  </style>
+	<script>
+    var username="groupstar@gmail.com"
+    var Password="1234";
+    var name="Jake";
+    var validateflag=true;
+     document.addEventListener("DOMContentLoaded", function() {
+        
+          // Attach event listener to the form
+          document.getElementById("main_signup").addEventListener('submit', function(event) {
+              event.preventDefault(); // Prevent form submission
+              saveFormData(); // Call the function to save form data
+          });
+      });
+  
+      function saveFormData() {
+          // Get form data
+          var formData = new FormData(document.getElementById("main_signup"));
+          
+          // Send AJAX request to server-side Python script to save the form data
+          var xhr = new XMLHttpRequest();
+          xhr.open("POST", "/check_user_existence", true); // Adjust URL to your server-side Python script
+          xhr.onreadystatechange = function() {
+              if (xhr.readyState === 4) {
+                  if (xhr.status === 200) {
+                      
+                      setTimeout(function(){ 
+                      window.location.href = "/";
+                      }, 100);
+                  } else {
+                      // If there was an error, display an error message
+                      document.getElementById("message").innerText = "User not Exists.";
+                  }
+              }
+          };
+          xhr.send(formData);
+      }
+ 
+	</script>
+  </head>
+  <body style="background-image: url('https://cdn.pixabay.com/photo/2015/05/31/12/00/key-791390_1280.jpg');margin-left:1000px;">
+    <div class="main-block">
+      <article><i><strong>Royal Car Rentals - Your high-end Rental Palace</strong></i></article>
+      <hr>
+      <h1>Sign In</h1>
+	
+    <form id="main_signup" method="POST" action="/check_user_existence">
+        
+        <label id="icon" for="name"><i class="fas fa-envelope"></i></label>
+        <input type="text" name="email" id="email" placeholder="Email" required/>
+        <label id="icon" for="name"><i class="fas fa-unlock-alt"></i></label>
+        <input type="password" name="pass_name" id="pass_name" placeholder="Password" required/>
+        <label id="passstrength" style="margin-left: 50px;"></label>
+		    </br>
+        <div id="message" style="color:red;margin-top: 1%;margin-bottom: 1%;"></div>
+        <hr>
+	      <div class="btn-block">
+          <button type="submit" id="signin_submit" value="submit">Sign In</button>
+		      <a href="/register" style="font-size: 12px;" class="butt">Sign Up</a>
+        </div>
+        
+      <hr>
+     <div id="footer_disp">
+        <p><i>"<strong>Royal Cars</strong>: Transforming Mindful Living into Royal Rides."</i></p>
+    
+      </div>
+     
+      </form>
+       
+    </div>
+  </body>
+</html>

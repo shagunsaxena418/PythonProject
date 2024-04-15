@@ -6,18 +6,13 @@
     <title>Royal Car Rentals</title>
   </head>
 
-  
-
- 
-  
-
   <style type="text/css">
        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap');
     form{
       padding-left: 5rem;
       background-color: white;
       width: 60%;
-      height: 90%;
+      height: 100%;
     }
     .form-control {
     display: block;
@@ -977,6 +972,49 @@ body {
         transform: skewY(10deg);
     }
 }
+#toast {
+    visibility: hidden;
+    max-width: 50%;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    text-align: center;
+    border-radius: 2px;
+    padding: 8px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 50px; 
+    font-size: 16px;
+    transform: translateX(-50%);
+}
+
+#toast.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 50px; opacity: 1;} 
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 50px; opacity: 1;} 
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 50px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 50px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+}
+
   </style>
   <body>
     <header></header>
@@ -995,10 +1033,9 @@ body {
                     <li><a href="/">Home</a></li>
                     <li><a href="/cars">Cars</a></li>
                     <li><a href="/home">Purchase</a></li>
-                    <li><a href="/booking">Booking</a></li>
-                    <li><a href="./html/about.html">About</a></li>
-                    <li><a href="./html/contact.html">Contact </a></li>
-                </ul>                                                                                                                                                                                                                                                                                                                                                                                                  
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/login">Log out</a><li>
+                </ul>                                                                                                                                       
             </div>
         </div>  
     </nav>
@@ -1087,10 +1124,11 @@ body {
           <input type="number" name="price" id="price" min="0" class="form-control" placeholder="Enter rental price per day" required>
         </div>
       </div>
-      <div id="message"></div>
+      
 
-    <button id="submit" type="submit" id="Register">Submit</button>
+    <button id="submit" type="submit" id="Register" onclick="showToast()">Submit</button>
     <button id="reset" type="reset">Reset</button>
+    <div id="toast">Success! Vehicle has been added to Royal Car Rentals fleet. Happy driving!!</div>
   </form>
 </div>
 
@@ -1111,14 +1149,15 @@ body {
           
           // Send AJAX request to server-side Python script to save the form data
           var xhr = new XMLHttpRequest();
-          xhr.open("POST", "/save-data", true); // Adjust URL to your server-side Python script
+          xhr.open("POST", "/data", true); // Adjust URL to your server-side Python script
           xhr.onreadystatechange = function() {
               if (xhr.readyState === 4) {
                   if (xhr.status === 200) {
-                      // If data saved successfully, display success message and redirect
-                      document.getElementById("message").innerText = "Booking is successful!";
-                      setTimeout(function() {
-                          window.location.href = "/home";
+                       // If data saved successfully, display success message and redirect
+                       var toastElement = document.getElementById("toast");
+                      toastElement.className = "show";
+                      setTimeout(function(){ toastElement.className = toastElement.className.replace("show", ""); 
+                      window.location.href = "/home";
                       }, 3000);
                   } else {
                       // If there was an error, display an error message
@@ -1131,9 +1170,40 @@ body {
   </script>
   
   
+   <!--Footer area-->
+    <footer>
+      <div class="footer">
+        <br />
+
+        <div class="footer one o">
+          <div class="foo"><p class="f1">BEST DEAL</p></div>
+          <div class="foo"><p class="f1">TOP VALUE</p></div>
+          <div class="foo"><p class="f1">BUDGET PICK READY</p></div>
+          <div class="foo"><p class="f1">IN STOCK</p></div>
+          <div id="msgg">
+            <p>ECONOMIC</p>
+            <p>CAR RENTALS</p>
+          </div>
+          <br />
+        </div>
+        <hr />
+          <div class="ft">
+            <iframe
+              id="map"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2880.981171725076!2d-79.33868912381685!3d43.77324967109664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d4d3bca1a3f78f%3A0x815365ed6c3b957e!2sLambton%20College%20In%20Toronto!5e0!3m2!1sen!2sca!4v1700614584508!5m2!1sen!2sca"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+        <div class="footer three tt">
+          <p id="ttt">&copy; Royal Cars Inc 2024</p>
+        </div>
+      </div>
+    </footer>
   </body>
-
-
 </html>
 
 

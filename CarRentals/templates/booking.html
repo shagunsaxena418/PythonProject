@@ -4,7 +4,116 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Royal Car Rentals</title>
+      <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
   </head>
+<script>
+    var encodedCardetails; 
+   // Wait for the DOM content to be fully loaded
+      document.addEventListener("DOMContentLoaded", function() {
+        AOS.init();
+        // Retrieve the JSON string from localStorage
+        var carString = localStorage.getItem('car-detail');
+
+        // Parse the JSON string back to a product object
+        encodedCardetails = JSON.parse(carString);
+
+        // Now you can use the product object on the destination page
+        console.log('Received Product:', encodedCardetails);
+        loadItem();
+          // Attach event listener to the form
+          document.getElementById("car-rental-form").addEventListener('submit', function(event) {
+              event.preventDefault(); // Prevent form submission
+              saveFormData(); // Call the function to save form data
+          });
+      });
+  
+      function saveFormData() {
+          // Get form data
+          var formData = new FormData(document.getElementById("car-rental-form"));
+          
+          // Send AJAX request to server-side Python script to save the form data
+          var xhr = new XMLHttpRequest();
+          xhr.open("POST", "/book", true); // Adjust URL to your server-side Python script
+          xhr.onreadystatechange = function() {
+              if (xhr.readyState === 4) {
+                  if (xhr.status === 200) {
+                       var data = JSON.parse(xhr.responseText);
+                        // Do something with the JSON data
+                       console.log(data);
+                      // If data saved successfully, display success message and redirect
+                      var toastElement = document.getElementById("toast");
+                      document.getElementById("toast").innerHTML +=document.getElementById("toast").innerText+ " and your Reference Number is RCR00000"+ data.ref;
+                      toastElement.className = "show";
+                      setTimeout(function(){ toastElement.className = toastElement.className.replace("show", ""); 
+                      window.location.href = "/cars";
+                      }, 3000);
+                  } else {
+                      // If there was an error, display an error message
+                      document.getElementById("message").innerText = "Error saving data. Please try again later.";
+                  }
+              }
+          };
+          xhr.send(formData);
+      }
+ 
+  function  loadItem(){
+  const template = document.getElementById("container-product");
+   template.innerHTML += `<div class="product-detail">
+    <div class="left-section" data-aos="zoom-in-up" data-aos-duration="500">
+    <img
+    src="https://cdn.pixabay.com/photo/2012/11/02/13/02/car-63930_1280.jpg"
+    alt="$99"
+  />
+    </div>
+    <div class="right-section">
+      <p class="title">${encodedCardetails.Brand}</p>
+      <p class="price">$ ${encodedCardetails.Price}</p>
+      <table>
+      
+      <tr>
+        <td>Model</td>
+        <td>${encodedCardetails.Model}</td>
+      </tr>
+      <tr>
+        <td>Year</td>
+        <td>${encodedCardetails.Year}</td>
+      </tr>
+      <tr>
+        <td>Color</td>
+        <td>${encodedCardetails.Color}</td
+      </tr>
+      <tr>
+        <td>Type</td>
+        <td>${encodedCardetails.Type}</td>
+
+      </tr>
+      <tr>
+        <td>Transmission</td>
+        <td>${encodedCardetails.Fuel}</td>
+
+      </tr>
+    </table>
+     
+      <p class="description">
+        <p>Features</p>
+        <ul>
+          <li>Engine: Powers the car; types include gasoline, diesel, electric, and hybrid.</li>
+          <li>Transmission: Transfers engine power to wheels; types include manual and automatic.</li>
+          <li>Wheels and Tires: Provide traction; modern cars use alloy wheels and radial tires.</li>
+          <li>Brakes: Essential for stopping; most cars have four-wheel disc brakes.</li>
+          
+        </ul>
+       </p>
+      </div>
+      
+      </div>
+     
+    </div>
+  </div>`;
+}
+</script>
 
   <style type="text/css">
        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap');
@@ -19,10 +128,9 @@ input[type=radio] {
   margin-right:10px;
 }
     form{
-      padding-left: 5rem;
       background-color: white;
-      width: 60%;
-      height:119%;
+      width: 1400px;
+      height:1100px;
     }
     .form-control {
     display: block;
@@ -88,6 +196,79 @@ input[type=radio] {
   cursor: pointer;
   box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.4)
 }
+.product-detail{
+  width:1200px;
+  margin-top:4%;
+}
+
+form .left{
+  width:700px;
+  float:left;
+}
+
+form .right{
+  width:700px;
+  float:left;
+}
+.left-section {
+  width:690px;
+  float:left;
+  height:530px;
+}
+
+.left-section img {
+  width:670px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 8px;
+  height:500px;
+}
+
+.right-section {
+  width:508px;
+  float:right;
+  height:530px;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+p.title {
+  color: green;
+  font-size: 48px;
+  margin: 8px 0;
+}
+
+p.id {
+  color: grey;
+}
+
+p.price {
+  font-size: 36px;
+  margin: 8px 0;
+}
+
+.star {
+  font-size: 32px;
+  color: rgb(1, 142, 62);
+}
+
+p.description{
+    font-size: 17px;
+}
+
 .overlay {
   position: fixed;
   top: 0;
@@ -334,14 +515,14 @@ body {
 
 /* Styling for the products section */
 .products {
-    padding-left: 20rem; /* Adjust padding for smaller screens */
+    padding-left: 6rem; /* Adjust padding for smaller screens */
     border: 44px solid;
-    background-color: black;
+    background-color: white;
 }
 
 .products p{
   font-weight: bold;
-  font-size: 0.9em;
+  font-size: 1.9em;
   margin-bottom: 10px;
 }
 
@@ -968,7 +1149,48 @@ body {
         z-index: 1;
     }
 }
+#toast {
+    visibility: hidden;
+    max-width: 50%;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    text-align: center;
+    border-radius: 2px;
+    padding: 8px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 50px; 
+    font-size: 16px;
+    transform: translateX(-50%);
+}
 
+#toast.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 50px; opacity: 1;} 
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 50px; opacity: 1;} 
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 50px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 50px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+}
 
 
   </style>
@@ -989,9 +1211,8 @@ body {
                     <li><a href="/">Home</a></li>
                     <li><a href="/cars">Cars</a></li>
                     <li><a href="/home">Purchase</a></li>
-                    <li><a href="/booking">Booking</a></li>
-                    <li><a href="./html/about.html">About</a></li>
-                    <li><a href="./html/contact.html">Contact </a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/login">Log out</a><li>
                 </ul>                                                                                                                                                                                                                                                                                                                                                                                                  
             </div>
         </div>  
@@ -1008,34 +1229,39 @@ body {
       
   
   <div class="products">
+    <div id="container-product"></div>
     
     <form id="car-rental-form" method="POST" action="/book">
-      <h1 id="title">Personal Information</h1>
+      <div class="left">
+        <h1 id="title">Personal Information</h1>
 
-      <div class="rowTab">
-        <div class="rightTab">
-          <input autofocus type="text" name="firstname" id="firstname" class="form-control" placeholder="First name" required>
+        <div class="rowTab">
+          <div class="rightTab">
+            <input autofocus type="text" name="firstname" id="firstname" class="form-control" placeholder="First name" required>
+          </div>
         </div>
-      </div>
-      
-      <div class="rowTab">
-        <div class="rightTab">
-          <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Last name" required>
+        
+        <div class="rowTab">
+          <div class="rightTab">
+            <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Last name" required>
+          </div>
         </div>
-      </div>
-
-      <div class="rowTab">
-        <div class="rightTab">
-          <input type="text" name="email" id="email" class="form-control" placeholder="Your Email" required>
+  
+        
+        <div class="rowTab">
+          <div class="rightTab">
+            <input type="text" name="email" id="email" class="form-control" placeholder="Your Email" required>
+          </div>
         </div>
-      </div>
-      
-      <div class="rowTab">
-        <div class="rightTab">
-          <input type="text" name="mobile" id="mobile" class="form-control" placeholder="Enter mobile number" required>
+        
+        <div class="rowTab">
+          <div class="rightTab">
+            <input type="text" name="mobile" id="mobile" class="form-control" placeholder="Enter mobile number" required>
+          </div>
         </div>
+        
       </div>
-      
+    <div class="right">
       <h1 id="title">Booking Detail</h1>
       <div class="rowTab">
         <div class="rightTab">
@@ -1061,26 +1287,29 @@ body {
           
         </div>
       </div>
+    </div>
+      
 
-      	<h1 id="title" style="padding-bottom: 10px;">Payment</h1>
-      	<div class="rowTab">
-      	
-		<label class="container">GooglePay
-		  <input type="radio" checked="checked" name="radio">
-		  <span class="checkmark"></span>
-		</label>
-		<label class="container">PayPal
-		  <input type="radio" name="radio">
-		  <span class="checkmark"></span>
-		</label>
-		<label class="container">Bank Transfer
-		  <input type="radio" name="radio">
-		  <span class="checkmark"></span>
-		</label>
+        <h1 id="title" style="padding-bottom: 10px;">Payment</h1>
+        <div class="rowTab">
+        
+        <label class="container">GooglePay
+          <input type="radio" checked="checked" name="radio">
+          <span class="checkmark"></span>
+        </label>
+        <label class="container">PayPal
+          <input type="radio" name="radio">
+          <span class="checkmark"></span>
+        </label>
+        <label class="container">Bank Transfer
+          <input type="radio" name="radio">
+          <span class="checkmark"></span>
+        </label>
 
          
       </div>
-      <button id="submit" type="submit" >Book Now</button>
+      <button id="submit" type="submit" onclick="showToast()">Book Now</button>
+      <div id="toast">Booked successfully!</div>
       </div>
 
     
@@ -1088,7 +1317,40 @@ body {
 </div>
 
     </main>
-  </body>
   
+   <!--Footer area-->
+    <footer>
+      <div class="footer">
+        <br />
 
+        <div class="footer one o">
+          <div class="foo"><p class="f1">BEST DEAL</p></div>
+          <div class="foo"><p class="f1">TOP VALUE</p></div>
+          <div class="foo"><p class="f1">BUDGET PICK READY</p></div>
+          <div class="foo"><p class="f1">IN STOCK</p></div>
+          <div id="msgg">
+            <p>ECONOMIC</p>
+            <p>CAR RENTALS</p>
+          </div>
+          <br />
+        </div>
+        <hr />
+          <div class="ft">
+            <iframe
+              id="map"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2880.981171725076!2d-79.33868912381685!3d43.77324967109664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d4d3bca1a3f78f%3A0x815365ed6c3b957e!2sLambton%20College%20In%20Toronto!5e0!3m2!1sen!2sca!4v1700614584508!5m2!1sen!2sca"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+        <div class="footer three tt">
+          <p id="ttt">&copy; Royal Cars Inc 2024</p>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>
+
